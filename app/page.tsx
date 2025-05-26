@@ -1,21 +1,21 @@
-import { BlogPosts } from 'app/components/posts'
+import { BlogPosts } from "app/components/posts";
 
 export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
+        Jasper Kense
       </h1>
-      <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+      <p className="mb-4 text-slate-800">
+        {`I'm a software engineer and designer passionate about creating impactful products. 
+        As the founder of Leapfrog, I combine technical expertise with design thinking to 
+        build solutions that make a difference. My approach merges clean, efficient code 
+        with thoughtful user experience design, always focusing on creating intuitive and 
+        powerful tools that help people work better.`}
       </p>
       <div className="my-8">
         <BlogPosts />
       </div>
     </section>
-  )
+  );
 }
