@@ -87,12 +87,27 @@ export default function Blog({ params }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
-        </p>
-        <span className="ml-2 px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
-          {post.metadata.type}
-        </span>
+        <div className="flex flex-row gap-1">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
+            {formatDate(post.metadata.publishedAt)}
+          </p>
+          {post.metadata.finishedAt &&
+            post.metadata.finishedAt !== "ongoing" && (
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                - {formatDate(post.metadata.finishedAt)}
+              </p>
+            )}
+        </div>
+        <div className="flex flex-row gap-1 ml-2">
+          {post.metadata.finishedAt === "ongoing" && (
+            <p className=" px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
+              Ongoing
+            </p>
+          )}
+          <span className=" px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
+            {post.metadata.type}
+          </span>
+        </div>
       </div>
       <article className="prose">
         <CustomMDX

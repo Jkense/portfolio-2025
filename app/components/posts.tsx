@@ -19,6 +19,11 @@ export function BlogPosts() {
     <div>
       {allBlogs
         .sort((a, b) => {
+          const aOngoing = a.metadata.finishedAt === "ongoing";
+          const bOngoing = b.metadata.finishedAt === "ongoing";
+          if (aOngoing && !bOngoing) return -1;
+          if (!aOngoing && bOngoing) return 1;
+          // If both are ongoing or both are not, sort by publishedAt desc
           if (
             new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
           ) {
@@ -54,13 +59,29 @@ export function BlogPosts() {
                         />
                       </a>
                     )}
-                    <p className="text-gray-600 dark:text-gray-400 tabular-nums text-sm">
-                      {formatDate(post.metadata.publishedAt, false)}
-                    </p>
+                    <div className="flex flex-row text-xs text-gray-600 dark:text-gray-400">
+                      <p className="tabular-nums">
+                        {formatDate(post.metadata.publishedAt, false)}
+                      </p>
+                      {post.metadata.finishedAt &&
+                        post.metadata.finishedAt !== "ongoing" && (
+                          <p className="tabular-nums">
+                            -{formatDate(post.metadata.finishedAt, false)}
+                          </p>
+                        )}
+                    </div>
                   </div>
-                  <span className="ml-2 px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
-                    {post.metadata.type}
-                  </span>
+                  <div className="flex flex-row gap-1 ml-2">
+                    {post.metadata.finishedAt === "ongoing" && (
+                      <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
+                        Ongoing
+                      </span>
+                    )}
+
+                    <span className="ml-2 px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
+                      {post.metadata.type}
+                    </span>
+                  </div>
                 </div>
               </div>
               <p className="text-gray-900 dark:text-gray-100">

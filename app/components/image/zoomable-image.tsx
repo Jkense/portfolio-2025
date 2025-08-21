@@ -11,7 +11,7 @@ export default function ZoomableImage(props) {
         {...props}
         alt={props.alt}
         className={
-          "rounded-lg cursor-zoom-in transition-transform duration-200 " +
+          "rounded-lg py-2cursor-zoom-in transition-transform duration-200 border border-slate-200 dark:border-slate-700 " +
           (props.className || "")
         }
         onClick={() => setOpen(true)}
@@ -22,7 +22,7 @@ export default function ZoomableImage(props) {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
           onClick={() => setOpen(false)}
         >
-          <div className="relative max-w-4xl w-full flex items-center justify-center">
+          <div className="relative w-full flex items-center justify-center">
             <Image
               {...props}
               alt={props.alt}
