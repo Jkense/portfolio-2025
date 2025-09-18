@@ -12,12 +12,19 @@ function getFaviconUrl(projectLink?: string) {
   }
 }
 
-export function BlogPosts() {
+type Props = {
+  filterType?: "project" | "publication";
+};
+
+export function BlogPosts({ filterType }: Props = {}) {
   let allBlogs = getBlogPosts();
 
   return (
     <div>
       {allBlogs
+        .filter((post) =>
+          filterType ? post.metadata.type === filterType : true
+        )
         .sort((a, b) => {
           const aOngoing = a.metadata.finishedAt === "ongoing";
           const bOngoing = b.metadata.finishedAt === "ongoing";
