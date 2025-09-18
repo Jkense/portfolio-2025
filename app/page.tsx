@@ -88,6 +88,34 @@ export default function Page() {
           ]}
         />
       </div>
+
+      <div className="my-8">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+          Education
+        </h2>
+        <ExperienceAccordion
+          items={[
+            {
+              company: "Technical University Delft",
+              role: "MSc. Design for Interaction & MSc. Strategic Product Design",
+              period: "2020 — 2022",
+              highlights: [
+                "Specialisation in UXR, design methodology and digital design",
+                "Courses on prototyping, smart products and machine learning",
+              ],
+            },
+            {
+              company: "Technical University Delft",
+              role: "BSc. Industrial Design Engineering",
+              period: "2015 — 2019",
+              highlights: [
+                "Specialisation in industrial design and software design",
+                "Courses on entrepreneurship and software development",
+              ],
+            },
+          ]}
+        />
+      </div>
     </section>
   );
 }
