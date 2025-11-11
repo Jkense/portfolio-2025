@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 function ArrowIcon() {
   return (
@@ -44,8 +43,8 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-export default function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
+export function LetsConnect() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -54,11 +53,6 @@ export default function Footer() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Disconnect observer after first trigger so animation only happens once
-            if (footerRef.current) {
-              observer.unobserve(footerRef.current);
-            }
-            observer.disconnect();
           }
         });
       },
@@ -67,18 +61,23 @@ export default function Footer() {
       }
     );
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      observer.disconnect();
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
   }, []);
 
   return (
-    <footer ref={footerRef} className="mb-16">
-      <div className="mb-8">
+    <div
+      ref={sectionRef}
+      className="relative my-16 bg-white dark:bg-white"
+    >
+      <div>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight text-slate-900">
           Let&apos;s Connect
         </h2>
@@ -88,20 +87,21 @@ export default function Footer() {
         </p>
       </div>
 
+      {/* Links positioned at the bottom - styled like footer */}
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         {socialLinks.map((link, index) => (
-          <motion.li
+          <li
             key={link.href}
-            initial={{ opacity: 0, y: 16 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: "easeOut",
+            className={
+              isVisible ? "animate-fly-in-bottom" : "opacity-0 translate-y-8"
+            }
+            style={{
+              animationDelay: `${index * 100}ms`,
+              animationFillMode: "forwards",
             }}
           >
             <a
-              className="group flex items-center transition-all hover:text-slate-900 dark:hover:text-neutral-100 cursor-pointer"
+              className="group flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
               rel="noopener noreferrer"
               target="_blank"
               href={link.href}
@@ -111,12 +111,10 @@ export default function Footer() {
               </span>
               <p className="ml-2 h-7">{link.label}</p>
             </a>
-          </motion.li>
+          </li>
         ))}
       </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} &middot; made by me
-      </p>
-    </footer>
+    </div>
   );
 }
+

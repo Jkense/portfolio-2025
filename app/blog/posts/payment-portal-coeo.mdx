@@ -1,0 +1,415 @@
+---
+title: "Payment Portal - Redesigning the payment portal for coeo incasso"
+publishedAt: "2022-01-12"
+finishedAt: "2023-06-30"
+summary: "Redesigning the payment portal for coeo incasso to improve the user experience and reduce friction."
+type: project
+priority: 0
+favicon: "/coeo/favicon.svg"
+---
+
+## Overview
+
+The payment portal redesign for coeo incasso was a six-month project focused on transforming how people interact with debt collection services online. This project is a direct continuation of my thesis work on inclusive debt collection processes, translating the research and insights from that work into a practical, accessible digital experience that serves everyone—from those who can pay immediately to those who need support navigating their financial situation.
+
+The existing portal had become a barrier rather than a bridge. Users struggled with unclear navigation, legal jargon, and a lack of guidance when they needed help most. My goal was to create a portal that felt supportive, clear, and actionable—one that reduced friction for those ready to pay while providing clear pathways to assistance for those who needed it.
+
+## The Challenge
+
+The original payment portal suffered from several critical issues that prevented users from successfully resolving their debts:
+
+**Cognitive overload**: The interface presented too many options at once, making it difficult for users to understand their next step. Legal terminology and complex instructions created confusion, especially for users with lower financial literacy or those experiencing stress.
+
+**Lack of guidance**: Users who couldn't pay in full had no clear path forward. The portal didn't explain payment plan options, eligibility criteria, or how to request assistance. This led to abandonment and delayed engagement.
+
+**Missing support connections**: While coeo worked with schuldhulpinstanties (debt assistance agencies) and support organizations, these connections were buried in the portal. Users who needed help didn't know where to find it.
+
+**Accessibility barriers**: The interface wasn't designed with vulnerable groups in mind. Small text, poor contrast, complex forms, and lack of clear error messages created additional friction for users already under stress.
+
+**Internal misalignment**: Different departments (operations, legal, customer support) had different understandings of what the portal should do, leading to inconsistent experiences and missed opportunities for improvement.
+
+## Research & Discovery
+
+### Internal Stakeholder Engagement
+
+I began by mapping the entire ecosystem of internal stakeholders who interacted with or were affected by the payment portal:
+
+**Operations team**: They handled the day-to-day processing of payments and payment plans. Through workshops and interviews, I learned about common user errors, support ticket patterns, and operational bottlenecks. They shared that many users called support simply because they couldn't figure out how to use the portal.
+
+**Legal department**: They ensured compliance with debt collection regulations, privacy laws, and GDPR requirements. I worked closely with them to understand constraints and requirements, finding ways to meet legal obligations while improving clarity. They helped me identify which information was legally required versus what was just "how we've always done it." GDPR compliance was particularly important, requiring careful attention to data collection, consent mechanisms, and user privacy rights throughout the design.
+
+**Customer support**: Frontline staff provided invaluable insights into user pain points. I analyzed support ticket data, conducted shadowing sessions, and held regular feedback sessions. Support staff shared that users often arrived at the portal confused, frustrated, or scared—emotions that the existing interface did nothing to address.
+
+**Leadership**: I presented findings and design directions to leadership at headquarters, ensuring strategic alignment and securing resources for implementation. Their perspective helped me balance user needs with business goals and regulatory requirements.
+
+### External User Research
+
+Understanding the user perspective was critical. I conducted interviews with:
+
+**Recent portal users**: People who had used the portal in the past six months, both successfully and unsuccessfully. I learned about their mental models, expectations, and where they got stuck. Many shared that they felt overwhelmed by the amount of information presented at once.
+
+**Organizations supporting people in debt**: I partnered with MEE Rotterdam Rijnmond and other support organizations to understand the broader context. These organizations work directly with vulnerable groups—people with intellectual disabilities, low literacy, language barriers, or complex financial situations. They helped me understand the real-world constraints and needs of our users.
+
+**Debt assistance agencies (schuldhulpinstanties)**: I interviewed caseworkers to understand how they interact with debt collection portals on behalf of their clients. This revealed opportunities for better integration and clearer communication pathways.
+
+### Key Research Insights
+
+Several patterns emerged from my research:
+
+1. **Users want to resolve their situation**: Most people who arrive at the portal want to take action, but they need clear guidance on what that action should be.
+
+2. **One clear path beats multiple options**: When users see too many choices, they freeze. A guided flow that asks "What do you want to do?" and then provides one clear path forward reduces abandonment.
+
+3. **Support should be visible, not hidden**: Users who need help should be able to find it immediately, not after clicking through multiple pages.
+
+4. **Language matters**: Plain language, empathetic tone, and clear explanations build trust and reduce anxiety. Legal jargon creates barriers.
+
+5. **Contextual help beats help pages**: Users need information at the moment of decision, not in a separate help section they may never find.
+
+## Design Process
+
+### Collaborative Ideation in Figma
+
+I used Figma as my primary collaboration tool, creating a shared workspace where team members from different departments could view, comment on, and contribute to designs in real-time. This approach had several advantages:
+
+**Rapid iteration**: I could quickly explore multiple directions, test different flows, and discard ideas that didn't work without investing significant development time.
+
+**Cross-functional feedback**: Operations, legal, and support staff could see designs as they evolved, providing feedback early and often. This prevented the "surprise reveal" moment and built buy-in throughout the process.
+
+**Visual communication**: For stakeholders who weren't familiar with UX terminology, visual prototypes made it easier to understand and discuss design decisions.
+
+**Version control**: Figma's version history allowed me to track how designs evolved and revisit earlier concepts when needed.
+
+<Image
+  src="/coeo/payment-portal/design-process.png"
+  alt="Design process showing collaborative ideation and iteration in Figma"
+  width={1200}
+  height={800}
+/>
+
+### Design Principles
+
+Based on my research, I established clear design principles that guided every decision:
+
+1. **Make the next step unmistakable**: Every screen should have one clear primary action. Users should never have to guess what to do next.
+
+2. **Reduce cognitive load**: Break complex processes into small, manageable steps. Use progressive disclosure to show information only when needed.
+
+3. **Provide support at decision points**: When users face a choice, offer help right there—don't make them search for it.
+
+4. **Use plain language at B1 level**: I committed to writing all content at B1 language level (intermediate Dutch), ensuring readability for users with varying language proficiency. This wasn't just a guideline—it was a hard requirement. Every piece of text was tested for readability, and I simplified language even when it meant challenging legal conventions.
+
+5. **Preserve user agency**: Give users control over their choices while providing clear guidance. Don't force them down a single path, but make the recommended path obvious.
+
+6. **Design for vulnerable users**: If the portal works for users with low literacy, language barriers, or cognitive disabilities, it will work for everyone.
+
+### Flow Design
+
+I mapped out the entire user journey, identifying decision points and support opportunities. The portal needed to support four primary use cases:
+
+**Direct payment flow**: For users ready to pay the full amount immediately, I streamlined the process to minimize steps while maintaining security. Clear progress indicators and confirmation screens reduce anxiety and provide reassurance throughout the payment process.
+
+**Payment plan flow**: For debtors who need to pay in installments, this was the most complex flow. I broke it down into clear steps: eligibility check, plan calculator, review, and confirmation. At each step, I provided clear explanations and support options. The ultimate goal was to enable full customization and personalization of payment plans, allowing users to choose their preferred payment date and adjust amounts based on their financial situation.
+
+**Objection flow**: For those who dispute the debt, I designed a flow that allows users to request an objection and provides them with the necessary information to do so. This flow guides users through the objection process with clear explanations of their rights and the steps required.
+
+**Support flow**: Users who need help can access it from anywhere in the portal. I designed multiple entry points—prominent buttons, contextual help, and direct connections to schuldhulpinstanties. This ensures that support is always accessible, not hidden behind multiple clicks.
+
+### Prototyping & Iteration
+
+I created multiple rounds of prototypes, each addressing feedback from the previous round:
+
+**Low-fidelity wireframes**: I started with simple sketches and wireframes to test flow logic and information architecture. These were quick to create and easy to modify based on feedback.
+
+**Interactive prototypes**: Using Figma's prototyping features, I created clickable prototypes that stakeholders could actually use. This helped identify usability issues before development began.
+
+<Image
+  src="/coeo/payment-portal/prototype.png"
+  alt="Interactive prototype showing the payment portal interface"
+  width={1200}
+  height={800}
+/>
+
+**High-fidelity designs**: Once flows were validated, I refined the visual design, paying attention to typography, spacing, color contrast, and accessibility. I tested with users to ensure the interface was readable and usable.
+
+## Key Features & Solutions
+
+### Intent-Based Routing
+
+The portal starts with a simple question: "What would you like to do?" Users choose from clear options that route them to the appropriate flow:
+
+- Pay now (direct payment)
+- Set up a payment plan (for installments)
+- Dispute the debt (objection flow)
+- Get help or information (support flow)
+
+This initial routing reduces cognitive load and directs users to the appropriate flow immediately. The language is simple and action-oriented, avoiding jargon or legal terminology.
+
+<Image
+  src="/coeo/payment-portal/soft-login.png"
+  alt="Soft login interface showing the entry point to the payment portal"
+  width={1200}
+  height={800}
+/>
+
+### Guided Payment Plan Flow
+
+For users who need a payment plan, I created a step-by-step guided experience:
+
+**Step 1: Eligibility check**: A simple questionnaire determines if the user is eligible for a payment plan. Clear explanations accompany each question, and users can access help at any point.
+
+**Step 2: Plan calculator and customization**: An interactive calculator lets users explore different payment options. They can adjust the monthly amount and see how it affects the duration of the plan. Real-time feedback shows whether the plan is feasible and what the consequences are.
+
+The ultimate goal was to enable full customization and personalization of payment plans. Users can choose their preferred payment date, adjust amounts based on their financial situation, and see how different scenarios affect their plan. This personalization empowers users to create a plan that works for their unique circumstances, rather than forcing them into a one-size-fits-all solution.
+
+**Step 3: Review and confirm**: Before finalizing, users see a clear summary of their plan, including total amount, monthly payment, duration, and important dates. This screen also includes information about what happens if they miss a payment and how to modify the plan if needed.
+
+**Step 4: Confirmation**: A clear confirmation screen provides next steps and contact information. Users receive an email confirmation with all details.
+
+### Objection Flow
+
+For users who dispute the debt, I designed a clear objection flow that guides them through the process of requesting an objection. The flow provides transparent information about their rights, the steps required, and what to expect throughout the process. Clear explanations help users understand the objection process without legal jargon, making it accessible even for those unfamiliar with debt collection procedures.
+
+<Image
+  src="/coeo/payment-portal/objection.png"
+  alt="Objection flow interface showing how users can dispute their debt"
+  width={1200}
+  height={800}
+/>
+
+### Integrated Support Hooks
+
+Throughout the portal, I integrated "support hooks"—short, direct connections to help:
+
+**Prominent support button**: A persistent support button is always visible, allowing users to access help from anywhere in the portal.
+
+**Contextual help**: At decision points, I provide contextual help that explains options and consequences. This information appears inline, not in a separate help section.
+
+**Direct connections to schuldhulpinstanties**: Users can find and contact debt assistance agencies directly from the portal. I provide clear information about what these organizations do and how they can help.
+
+**Chat and phone support**: Multiple support channels are available, with clear information about when each is available and what types of questions they can answer.
+
+### Clear Status and Communication
+
+The portal includes a status dashboard that shows:
+
+- Current debt amount
+- Payment history
+- Upcoming payments
+- Important dates and deadlines
+- Next steps
+
+This information is presented clearly, using plain language and visual hierarchy to make it easy to scan and understand. Users can see their progress and understand what's expected of them.
+
+<Image
+  src="/coeo/payment-portal/file-overview.png"
+  alt="File overview dashboard showing debt status and key information"
+  width={1200}
+  height={800}
+/>
+
+<Image
+  src="/coeo/payment-portal/file-view.png"
+  alt="Detailed file view showing payment history and upcoming payments"
+  width={1200}
+  height={800}
+/>
+
+### Iconography System
+
+A critical part of making the portal accessible was developing an iconography system that actually worked. I didn't just add icons for decoration—I tested them rigorously to ensure they communicated meaning clearly, especially for users with low literacy or language barriers.
+
+**Icon testing and validation**: I tested icons with users from vulnerable groups to ensure they were universally understood. Some icons that seemed obvious to me were confusing to users. I iterated until I found iconography that worked across different literacy levels and cultural backgrounds.
+
+**Consistent visual language**: Once validated, I used these icons consistently throughout the portal to create visual anchors. Icons supported text rather than replacing it, ensuring that users who didn't understand an icon could still read the accompanying text.
+
+**Contextual iconography**: Icons were placed strategically at decision points and action areas, helping users scan the interface quickly and understand their options at a glance. This was particularly important for users who found reading large blocks of text challenging.
+
+### Accessibility Improvements & WCAG Compliance
+
+Accessibility wasn't an afterthought—it was a core requirement from the start. I committed to full WCAG 2.1 AA compliance, ensuring the portal was accessible to users with disabilities:
+
+**WCAG 2.1 AA compliance**: I conducted regular accessibility audits throughout the design and development process, checking against all WCAG 2.1 AA criteria. This included:
+
+- Color contrast ratios meeting WCAG standards (4.5:1 for normal text, 3:1 for large text)
+- Keyboard navigation for all interactive elements
+- Screen reader compatibility with proper ARIA labels and semantic HTML
+- Focus indicators that are clearly visible
+- Error identification and suggestions for correction
+- Consistent navigation and labeling
+
+**Language and readability**: Beyond B1 language level, I ensured:
+
+- Increased text size and improved contrast ratios
+- Simplified forms with clear labels and error messages
+- Plain language throughout, tested for comprehension
+- Visual indicators for important information
+- Multiple ways to access the same information (text, icons, visual hierarchy)
+
+**Technical accessibility**:
+
+- Keyboard navigation support for all functionality
+- Screen reader compatibility with proper semantic structure
+- Alternative text for all images and icons
+- Form validation that's clear and helpful
+- Responsive design that works on assistive technologies
+
+## Testing & Validation
+
+### Testing with Vulnerable Groups
+
+I partnered with MEE Rotterdam Rijnmond to test the new portal with vulnerable user groups. MEE provides support to people with disabilities and other vulnerable situations, making them ideal partners for inclusive design testing.
+
+**Test participants**: I tested with users who had:
+
+- Intellectual disabilities
+- Low literacy levels
+- Language barriers (non-native Dutch speakers)
+- Limited digital experience
+- High financial stress
+
+**Test methodology**: I conducted one-on-one usability sessions, observing how users navigated the portal and where they encountered difficulties. I asked users to think aloud, explaining their thought process as they used the portal.
+
+**Key findings**: The testing revealed several critical issues:
+
+- Some users didn't understand certain terms, even when I thought I had simplified them
+- The payment plan calculator was initially too complex; I simplified it based on feedback
+- Users wanted more reassurance and confirmation throughout the process
+- Some users needed more time to process information; I added pause points and the ability to save progress
+
+**Iterations**: Based on testing feedback, I made multiple rounds of improvements:
+
+- Simplified language even further, rigorously testing against B1 level requirements
+- Added more visual cues and icons, validating each icon's meaning with users
+- Increased spacing and made buttons larger for better accessibility
+- Added progress indicators to reduce anxiety
+- Included more confirmation messages for reassurance
+- Created a "save and return later" feature for users who needed time to process information
+
+### Internal Testing
+
+I also conducted extensive internal testing with coeo staff:
+
+**Support staff testing**: Customer support representatives tested the portal to ensure they could guide users through it during phone calls. This helped me identify areas where additional clarity was needed.
+
+**Operations testing**: The operations team tested the backend integration to ensure payment plans were processed correctly and that the portal data matched their systems.
+
+**Legal review**: The legal department reviewed all content to ensure compliance while I worked to maintain clarity and accessibility.
+
+## Outcomes & Impact
+
+### User Experience Improvements
+
+The redesigned portal significantly improved the user experience:
+
+**Reduced abandonment**: Users were more likely to complete their intended action, whether that was making a payment or setting up a payment plan.
+
+**Faster task completion**: The guided flows and clear next steps reduced the time users spent figuring out what to do.
+
+**Increased support engagement**: More users accessed support resources, indicating that the "hooks" were working and users felt comfortable seeking help.
+
+**Better comprehension**: Users could explain back what they understood about their situation and next steps, indicating improved comprehension.
+
+### Operational Impact
+
+The improvements also had positive operational impacts:
+
+**Reduced support calls**: Fewer users called support with basic questions about how to use the portal, freeing up support staff for more complex issues.
+
+**Faster payment plan setup**: Users could set up payment plans independently, reducing the administrative burden on operations.
+
+**Improved data quality**: Clear forms and validation reduced errors in submitted information.
+
+**Better user satisfaction**: Feedback from users indicated higher satisfaction with the portal experience.
+
+### Accessibility Achievement
+
+Perhaps most importantly, the portal became truly accessible to vulnerable user groups. Users who previously couldn't use the portal—due to language barriers, low literacy, or cognitive disabilities—could now successfully navigate it with minimal assistance.
+
+## Technical Considerations
+
+While this project focused primarily on user experience, several technical decisions supported the design goals:
+
+**Responsive design**: Responsiveness was critical, as users access the portal from a wide variety of devices—from older smartphones to tablets and desktop computers. I designed with a mobile-first approach, ensuring that all functionality worked seamlessly across screen sizes. Touch targets were sized appropriately for mobile, layouts adapted fluidly, and forms remained usable regardless of device. This was especially important given that many users access the portal in stressful situations, often on mobile devices with limited screen space. The responsive design ensured that users could complete their tasks effectively whether they were on a small phone screen or a large desktop monitor.
+
+**Progressive enhancement**: The portal works for users with limited technology, while providing enhanced features for those with modern browsers.
+
+**Performance optimization**: Fast load times reduce abandonment, especially for users on slower connections or older devices.
+
+**Security and privacy**: I maintained high security standards while making the experience feel less intimidating. Clear explanations of security measures helped build trust.
+
+**Legal compliance and GDPR**: Meeting legal requirements, particularly GDPR, was essential. I designed consent mechanisms, data collection forms, and privacy notices that complied with GDPR while remaining clear and accessible. This included transparent information about data processing, easy-to-understand consent options, and clear privacy controls. Working with the legal department, I ensured that all user-facing elements met regulatory requirements without compromising usability.
+
+**Integration with existing systems**: The portal needed to integrate seamlessly with coeo's existing payment processing and customer management systems, requiring close collaboration with the development team.
+
+## Development & Iteration
+
+After completing the design phase, the project was handed over to the development team. However, this wasn't a simple handoff—I worked closely with developers throughout the implementation process, redesigning and refining where needed.
+
+### Collaborative Development Process
+
+**Design-to-development handoff**: I provided detailed design specifications, component libraries, and interaction guidelines. But I stayed involved throughout development, not just to answer questions, but to actively collaborate on solutions.
+
+**Real-world constraints**: As development progressed, we encountered technical constraints and edge cases that weren't apparent in design. Rather than compromising on user experience, we worked together to find solutions that maintained design integrity while working within technical limitations.
+
+**Redesigning during development**: When developers discovered that certain design patterns were difficult to implement or didn't work as expected in the actual system, we redesigned together. This iterative approach meant we could test designs in the real environment and adjust based on what we learned.
+
+**Accessibility in code**: Working with developers, I ensured that WCAG compliance wasn't just a design goal but was actually implemented in the code. I tested with screen readers, keyboard navigation, and other assistive technologies throughout development.
+
+**Performance and usability**: I balanced design goals with performance requirements. When certain design elements impacted load times or responsiveness, we worked together to find alternatives that maintained the user experience while meeting technical requirements.
+
+### Key Development Iterations
+
+Several significant redesigns happened during development:
+
+**Payment plan calculator**: The initial design for the interactive calculator needed refinement when I saw how it performed with real data and calculations. I simplified the interface and improved the real-time feedback based on technical constraints and user testing during development.
+
+**Form validation**: I redesigned error states and validation messages multiple times during development, testing them with real users to ensure they were clear and helpful, not just technically correct.
+
+**Mobile experience**: While I designed mobile-first, the actual mobile implementation revealed issues I hadn't anticipated. I iterated on touch targets, spacing, and interaction patterns based on real device testing.
+
+**Icon implementation**: Some icons that worked in design didn't translate well to code or weren't rendering clearly at different sizes. I refined the iconography system and created implementation guidelines for developers.
+
+### Maintaining Design Integrity
+
+Throughout development, my role was to ensure that the user experience goals weren't lost in translation. This meant:
+
+- Regular design reviews of implemented features
+- User testing of development builds, not just design prototypes
+- Collaboration on technical solutions that maintained user experience
+- Documentation and guidelines to help developers make design decisions independently
+- Quick iteration cycles when issues were discovered
+
+This collaborative approach meant the final product was both well-designed and well-implemented, with design and development working together rather than in sequence.
+
+## Lessons Learned
+
+This project reinforced several important lessons about designing for vulnerable users and complex organizational contexts:
+
+**Inclusive design benefits everyone**: When I designed for the most vulnerable users, I created a better experience for all users. The clarity, simplicity, and support features helped everyone, not just those with specific needs.
+
+**Stakeholder alignment is critical**: By involving all departments from the beginning, I avoided the "design by committee" problem and instead created genuine collaboration. Each department's expertise contributed to a better solution.
+
+**Testing with real users is essential**: My assumptions about what would work were often wrong. Testing with vulnerable groups revealed issues I never would have found otherwise.
+
+**Language is a design tool**: Committing to B1 language level wasn't easy—it required challenging legal conventions and simplifying complex concepts. But the impact was significant: users could actually understand what they needed to do. The words I use are as important as the interface elements, and readability testing should be part of the design process, not an afterthought.
+
+**Support should be designed in, not added on**: Rather than treating support as a separate feature, I integrated it throughout the experience. This made help feel like a natural part of the process, not a last resort.
+
+**Iteration is necessary**: No design is perfect on the first try. Multiple rounds of testing and iteration were essential to creating a truly usable solution.
+
+**Organizational change requires communication**: I couldn't just design a better portal; I had to help the organization understand why these changes mattered and how they aligned with coeo's values and goals.
+
+**WCAG compliance requires ongoing attention**: Accessibility isn't something you check once—it requires constant vigilance throughout design and development. Working closely with developers to ensure WCAG compliance in code, not just in design, was essential.
+
+**Design and development should collaborate, not hand off**: The best results came from working together with developers throughout implementation, not just handing off designs and hoping they'd be implemented correctly. Redesigning during development based on real constraints led to better solutions.
+
+**Iconography must be tested, not assumed**: Icons that seem obvious to designers may be confusing to users. Testing iconography with vulnerable user groups revealed that many of my initial assumptions were wrong, leading to a more effective visual language.
+
+## Conclusion
+
+The payment portal redesign for coeo incasso demonstrated that debt collection interfaces can be both legally compliant and genuinely helpful. By centering vulnerable users in the design process, I created a portal that serves everyone better—reducing friction, increasing comprehension, and providing clear pathways to support.
+
+The project also showed the value of cross-functional collaboration. By working closely with operations, legal, customer support, and external partners, I created a solution that worked not just for users, but for the entire organization.
+
+Most importantly, the project proved that inclusive design isn't just the right thing to do—it's the smart thing to do. When I designed for the most vulnerable users, I created better experiences for everyone, and built systems that truly serve their purpose.

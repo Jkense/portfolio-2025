@@ -9,6 +9,8 @@ type Metadata = {
   image?: string;
   type: string;
   projectLink?: string;
+  priority?: number;
+  favicon?: string;
 };
 
 function parseFrontmatter(fileContent: string) {

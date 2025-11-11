@@ -6,6 +6,13 @@ export async function GET() {
 
   const itemsXml = allBlogs
     .sort((a, b) => {
+      // First sort by priority (higher priority first)
+      const aPriority = a.metadata.priority ?? 0;
+      const bPriority = b.metadata.priority ?? 0;
+      if (aPriority !== bPriority) {
+        return bPriority - aPriority; // Higher priority first
+      }
+      // If priorities are equal, sort by publishedAt desc
       if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
         return -1
       }

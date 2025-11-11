@@ -87,7 +87,7 @@ export default function ResumePage() {
             teams to reduce time-to-insight.
             <br />
             <span className="italic">
-              GCP, Typescript, NextJS, React, Node, Remix, Flask
+              GCP, Typescript, NextJS, React, Node
             </span>
           </li>
           <li className="mb-2">
@@ -102,7 +102,7 @@ export default function ResumePage() {
             <span className="italic">Blender, Solidworks, Unity3D</span>
           </li>
           <li className="mb-2">
-            <strong>Design researcher at Chemistry team</strong> (2023-2024,
+            <strong>Design researcher at Chemistry team</strong> (2023-ongoing,
             part-time Freelance, EMEA & Singapore, 90% Remote)
             <br />
             Design researcher at Chemistry team on the Europe team for clients
@@ -123,7 +123,7 @@ export default function ResumePage() {
         <h2 className="text-xl font-semibold mb-2">Hard skills</h2>
         <ul className="list-disc pl-5">
           <li>
-            Development: GCP, Typescript, NextJS, React, Node, Remix, Flask
+            Development: GCP, Typescript, NextJS, React, Node
           </li>
           <li>3D modelling: Blender, Solidworks, Unity3D</li>
           <li>

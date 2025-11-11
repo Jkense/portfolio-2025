@@ -30,7 +30,7 @@ export function ExperienceAccordion({ items }: Props) {
   };
 
   return (
-    <div className="divide-y divide-slate-200 rounded-md border border-slate-200">
+    <div className="divide-y divide-slate-200 rounded-md border border-slate-200 bg-white dark:bg-white">
       {items.map((item, index) => {
         const isOpen = openSet.has(index);
         const controlId = `experience-section-${index}`;
@@ -38,7 +38,7 @@ export function ExperienceAccordion({ items }: Props) {
           <div key={`${item.company}-${index}`} className="">
             <button
               type="button"
-              className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+              className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 cursor-pointer"
               aria-expanded={isOpen}
               aria-controls={controlId}
               onClick={() => toggleIndex(index)}

@@ -20,21 +20,21 @@ export default function Page() {
       </p>
 
       <div className="my-8">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+        <h2 className="mb-3 text-2xl font-semibold tracking-tight text-slate-900">
           Projects
         </h2>
         <BlogPosts filterType="project" />
       </div>
 
       <div className="my-8">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+        <h2 className="mb-3 text-2xl font-semibold tracking-tight text-slate-900">
           Publications
         </h2>
         <BlogPosts filterType="publication" />
       </div>
 
       <div className="my-8">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+        <h2 className="mb-3 text-2xl font-semibold tracking-tight text-slate-900">
           Experience
         </h2>
         <ExperienceAccordion
@@ -66,7 +66,7 @@ export default function Page() {
             {
               company: "Chemistry team",
               role: "UX Designer",
-              period: "2023 — 2024 · part-time freelance",
+              period: "2023 — ongoing · part-time freelance",
               summary:
                 "Design researcher on the Europe team for clients in the EMEA region, mostly healthcare-focused research & design projects.",
               highlights: [
@@ -90,7 +90,7 @@ export default function Page() {
       </div>
 
       <div className="my-8">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight text-slate-900">
+        <h2 className="mb-3 text-2xl font-semibold tracking-tight text-slate-900">
           Education
         </h2>
         <ExperienceAccordion
