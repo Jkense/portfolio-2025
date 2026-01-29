@@ -54,18 +54,18 @@ export default function RootLayout({
       lang="en"
       className={cx(
         "text-black  dark:text-white dark:bg-black",
-        inter.className
+        inter.className,
       )}
     >
-      <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
+      <body className="antialiased flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-auto max-w-4xl mx-6 lg:mx-auto min-w-0 flex flex-col px-2 md:px-0">
           {children}
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
         </main>
+        <Footer />
       </body>
+      <Analytics />
+      <SpeedInsights />
     </html>
   );
 }

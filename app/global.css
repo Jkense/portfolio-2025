@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+@layer base {
+  @font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Roboto.woff2) format("woff2");
+  }
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;

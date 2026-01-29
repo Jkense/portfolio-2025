@@ -64,7 +64,7 @@ export default function Footer() {
       },
       {
         threshold: 0.2,
-      }
+      },
     );
 
     if (footerRef.current) {
@@ -78,16 +78,6 @@ export default function Footer() {
 
   return (
     <footer ref={footerRef} className="mb-16">
-      <div className="mb-8">
-        <h2 className="mb-4 text-2xl font-semibold tracking-tight text-slate-900">
-          Let&apos;s Connect
-        </h2>
-        <p className="mb-6 text-slate-700">
-          Always interested in new opportunities, collaborations, and
-          conversations about technology and design.
-        </p>
-      </div>
-
       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
         {socialLinks.map((link, index) => (
           <motion.li
