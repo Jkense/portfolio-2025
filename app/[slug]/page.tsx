@@ -3,6 +3,8 @@ import { formatDate, getBlogPosts } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { CustomMDX } from "app/components/mdx";
 import ZoomableImage from "app/components/image/zoomable-image";
+import { ArticleMetadataGrid } from "app/components/article-metadata-grid";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -61,8 +63,12 @@ export default async function Blog({ params }) {
     notFound();
   }
 
+  const isProject = post.metadata.type === "project";
+  const hasHeroImage = post.metadata.image;
+  const hasHeroImageFromMeta = post.metadata.heroImage;
+
   return (
-    <section>
+    <section className="py-8">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -74,8 +80,8 @@ export default async function Blog({ params }) {
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
+            image: post.metadata.image || post.metadata.heroImage
+              ? `${baseUrl}${post.metadata.image || post.metadata.heroImage}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
@@ -85,33 +91,45 @@ export default async function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
+
+      {/* Title */}
+      <h1 className="title font-serif font-medium text-4xl tracking-tight mb-8">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <div className="flex flex-row gap-1">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)}
-          </p>
-          {post.metadata.finishedAt &&
-            post.metadata.finishedAt !== "ongoing" && (
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                - {formatDate(post.metadata.finishedAt)}
-              </p>
-            )}
+
+      {/* Hero image from metadata */}
+      {hasHeroImageFromMeta && (
+        <div className="mb-8 rounded-lg overflow-hidden border border-border">
+          <Image
+            src={post.metadata.heroImage!}
+            alt={post.metadata.title}
+            width={896}
+            height={504}
+            className="w-full h-auto object-cover"
+            priority
+          />
         </div>
-        <div className="flex flex-row gap-1 ml-2">
-          {post.metadata.finishedAt === "ongoing" && (
-            <p className=" px-2 py-0.5 rounded bg-white dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
-              Ongoing
-            </p>
-          )}
-          <span className=" px-2 py-0.5 rounded bg-white dark:bg-slate-700 text-xs text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 align-middle">
-            {post.metadata.type}
-          </span>
+      )}
+
+      {/* Hero image from content (backwards compatibility) */}
+      {hasHeroImage && !hasHeroImageFromMeta && (
+        <div className="mb-8 rounded-lg overflow-hidden border border-border">
+          <Image
+            src={post.metadata.image!}
+            alt={post.metadata.title}
+            width={896}
+            height={504}
+            className="w-full h-auto object-cover"
+            priority
+          />
         </div>
-      </div>
-      <article className="prose">
+      )}
+
+      {/* Metadata grid (projects only) */}
+      {isProject && <ArticleMetadataGrid metadata={post.metadata} />}
+
+      {/* Content */}
+      <article className="prose mt-8">
         <CustomMDX
           source={post.content}
           components={{ Image: ZoomableImage }}

@@ -5,9 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { fonts, fontVariables } from "./fonts";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -42,8 +40,6 @@ export const metadata: Metadata = {
   },
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
-
 export default function RootLayout({
   children,
 }: {
@@ -52,14 +48,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cx(
-        "text-black  dark:text-white dark:bg-black",
-        inter.className,
-      )}
+      className={`bg-cream text-black dark:text-white dark:bg-black ${fontVariables}`}
     >
-      <body className="antialiased flex flex-col min-h-screen">
+      <body
+        className={`antialiased flex flex-col min-h-screen overflow-x-hidden ${fonts.sans.className}`}
+      >
         <Navbar />
-        <main className="flex-auto max-w-4xl mx-6 lg:mx-auto min-w-0 flex flex-col px-2 md:px-0">
+        <main className="flex-auto max-w-4xl mx-auto w-full px-6 lg:px-0">
           {children}
         </main>
         <Footer />

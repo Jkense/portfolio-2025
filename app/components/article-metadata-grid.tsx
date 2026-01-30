@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { getBlogPosts, type Metadata } from "app/blog/utils";
+import type { Metadata } from "app/blog/utils";
 import { GeistMono } from "geist/font/mono";
 
-type Props = {
-  filterType?: "project" | "publication";
+type ArticleMetadataGridProps = {
+  metadata: Metadata;
 };
 
 function parseReferences(references: string): { title: string; url: string }[] {
@@ -22,7 +21,7 @@ function parseList(value: string): string[] {
   return value.split(",").map((item) => item.trim());
 }
 
-function ProjectMetadataGridRow({ metadata }: { metadata: Metadata }) {
+export function ArticleMetadataGrid({ metadata }: ArticleMetadataGridProps) {
   const { timeline, team, role, skills, references } = metadata;
 
   const hasContent = timeline || team || role || skills || references;
@@ -34,7 +33,7 @@ function ProjectMetadataGridRow({ metadata }: { metadata: Metadata }) {
   const referencesList = parseReferences(references || "");
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 py-6">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 py-8">
       {timeline && (
         <div>
           <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
@@ -104,83 +103,6 @@ function ProjectMetadataGridRow({ metadata }: { metadata: Metadata }) {
           </ul>
         </div>
       )}
-    </div>
-  );
-}
-
-export function BlogPosts({ filterType }: Props = {}) {
-  let allBlogs = getBlogPosts();
-
-  const sortedPosts = allBlogs
-    .filter((post) => (filterType ? post.metadata.type === filterType : true))
-    .sort((a, b) => {
-      const aPriority = a.metadata.priority ?? 0;
-      const bPriority = b.metadata.priority ?? 0;
-      if (aPriority !== bPriority) {
-        return bPriority - aPriority;
-      }
-      const aOngoing = a.metadata.finishedAt === "ongoing";
-      const bOngoing = b.metadata.finishedAt === "ongoing";
-      if (aOngoing && !bOngoing) return -1;
-      if (!aOngoing && bOngoing) return 1;
-      if (
-        new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-      ) {
-        return -1;
-      }
-      return 1;
-    });
-
-  // For projects, show metadata grid. For publications, show simple list.
-  if (filterType === "project") {
-    return (
-      <div className="flex flex-col gap-0 divide-y divide-border">
-        {sortedPosts.map((post) => {
-          const displayTitle = post.metadata.shortTitle || post.metadata.title;
-
-          return (
-            <Link
-              key={post.slug}
-              href={`/${post.slug}`}
-              className="group py-6 hover:opacity-70 transition-opacity block"
-            >
-              {/* Title */}
-              <p className="text-base text-primary font-medium mb-2 group-hover:underline">
-                {displayTitle}
-              </p>
-              {/* Metadata grid */}
-              <ProjectMetadataGridRow metadata={post.metadata} />
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-
-  // Publications: simple list format
-  return (
-    <div className="flex flex-col gap-4">
-      {sortedPosts.map((post) => {
-        const year = new Date(post.metadata.publishedAt).getFullYear();
-        const displayTitle = post.metadata.shortTitle || post.metadata.title;
-
-        return (
-          <Link
-            key={post.slug}
-            href={`/${post.slug}`}
-            className="group flex flex-col gap-2"
-          >
-            {/* First line: year */}
-            <div className={`flex gap-6 text-sm text-muted ${GeistMono.className}`}>
-              <span>{year}</span>
-            </div>
-            {/* Second line: title */}
-            <p className="text-base group-hover:text-primary transition-colors">
-              {displayTitle}
-            </p>
-          </Link>
-        );
-      })}
     </div>
   );
 }

@@ -1,16 +1,26 @@
 import fs from "fs";
 import path from "path";
 
-type Metadata = {
+export type Metadata = {
   title: string;
   publishedAt: string;
   finishedAt?: string;
   summary: string;
   image?: string;
+  heroImage?: string; // Hero image displayed above metadata grid
   type: string;
   projectLink?: string;
   priority?: number;
   favicon?: string;
+  // Display metadata
+  client?: string; // e.g., "coeo", "ikea", "chemistry"
+  shortTitle?: string; // Short title for list display, e.g., "payment portal"
+  // Project-specific metadata (optional)
+  timeline?: string; // e.g., "Jan 2022 - Jun 2023"
+  team?: string; // Comma-separated: "Jasper Kense, Operations Team"
+  role?: string; // Comma-separated: "Lead Designer, UX Researcher"
+  skills?: string; // Comma-separated: "Figma, User Research"
+  references?: string; // Format: "title:url,title:url"
 };
 
 function parseFrontmatter(fileContent: string) {

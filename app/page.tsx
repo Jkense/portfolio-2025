@@ -1,24 +1,16 @@
 import { BlogPosts } from "app/components/posts";
 import { EducationList } from "app/components/education-list";
 
-function FullWidthDivider() {
-  return (
-    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]">
-      <hr className="border-t border-divider" />
-    </div>
-  );
-}
-
 export default function Page() {
   return (
-    <section className="py-6">
+    <section className="py-8">
       {/* Hero */}
-      <div className="py-6">
-        <h1 className="title font-serif font-medium text-5xl tracking-tight mb-4">
+      <div className="py-8 mb-16">
+        <h1 className="title font-serif font-medium text-5xl lg:text-6xl tracking-tight mb-6 leading-tight">
           I&apos;m <span className="text-black dark:text-white">Jasper</span>,
           digital designer and software engineer
         </h1>
-        <p className="text-ds-gray text-base leading-relaxed">
+        <p className="text-ds-gray text-base leading-relaxed max-w-2xl">
           I build impactful digital products by combining engineering and
           design. I enjoy working directly with users, shaping clear user
           experiences and implementing ideas directly into the codebase. My goal
@@ -26,19 +18,15 @@ export default function Page() {
         </p>
       </div>
 
-      <FullWidthDivider />
-
       {/* Projects */}
-      <section className="py-6">
-        <h2 className="text-lg font-normal mb-4">Projects</h2>
+      <section className="py-8 mb-16">
+        <h2 className="text-lg font-normal mb-6 font-serif">Projects</h2>
         <BlogPosts filterType="project" />
       </section>
 
-      <FullWidthDivider />
-
       {/* Education */}
-      <section className="py-6">
-        <h2 className="text-lg font-normal mb-4">Education</h2>
+      <section className="py-8 mb-16">
+        <h2 className="text-lg font-normal mb-6 font-serif">Education</h2>
         <EducationList
           items={[
             {
@@ -65,11 +53,9 @@ export default function Page() {
         />
       </section>
 
-      <FullWidthDivider />
-
       {/* Publications */}
-      <section className="py-6">
-        <h2 className="text-lg font-normal mb-4">Publications</h2>
+      <section className="py-8">
+        <h2 className="text-lg font-normal mb-6 font-serif">Publications</h2>
         <BlogPosts filterType="publication" />
       </section>
     </section>
