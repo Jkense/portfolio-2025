@@ -3,8 +3,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ["Geist-mono"],
-        serif: ["Noto Serif"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-noto-serif)", "Georgia", "serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
       },
     },
   },

@@ -1,90 +1,133 @@
 "use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import { GeistMono } from "geist/font/mono";
 
 const navItems = {
   "/": {
-    name: "home",
+    name: "Work",
   },
   "https://medium.com/@JasperKense": {
-    name: "blog",
+    name: "Blog",
   },
-  "/resume": {
-    name: "resume",
+  "/resume.pdf": {
+    name: "Resume",
   },
 };
 
 export function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <>
-      <div className="font-mono flex justify-center px-6 py-5 z-50 bg-background gap-6 border-b border-foreground/10 lg:h-16 align-center items-center relative min-h-[32px]">
-        <div className="max-w-4xl w-full flex items-center gap-6 relative">
-          <div className="flex items-center w-full ">
-            <a
-              className="flex flex-col sm:flex-row sm:inline-flex sm:gap-4 gap-0 cursor-pointer opacity-100"
-              href="/"
-            >
-              <h4 className=" opacity-100 text-foreground font-medium">
+    <nav className="border-b border-border">
+      <div className="max-w-4xl mx-auto w-full px-6 lg:px-0">
+        <div className={`flex items-center justify-between py-6 text-sm ${GeistMono.className}`}>
+          {/* Left: Branding */}
+          <div className="flex items-center gap-10 flex-1">
+            <Link href="/" className="flex items-center gap-10">
+              <span className="font-medium text-black dark:text-white">
                 Jasper Kense
-              </h4>
-              <h4 className="flex items-center gap-0">
-                Product Designer + Engineer
-              </h4>
-            </a>
+              </span>
+              <span className="text-muted hidden sm:inline">
+                Product Designer & Engineer
+              </span>
+            </Link>
           </div>
-          <div className="md:flex hidden gap-8 w-full justify-end items-center">
+
+          {/* Right: Nav links (desktop) */}
+          <div className="hidden md:flex items-center gap-10">
             {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link key={path} href={path} className="w-full text-left ">
-                  {name}
-                </Link>
-              );
-            })}
-          </div>
-          <div className="md:hidden flex gap-4 items-center">
-            <div>
-              <svg
-                width="26"
-                height="26"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="cursor-pointer hover:opacity-50"
-              >
-                <path
-                  className="transition-all duration-300 origin-center "
-                  d="M4 8H20"
-                  stroke="currentColor"
-                  stroke-width="2"
-                ></path>
-                <path
-                  className="transition-all duration-300 origin-center "
-                  d="M4 16H20"
-                  stroke="currentColor"
-                  stroke-width="2"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div
-          className="md:hidden absolute left-0 right-0 z-60 top-full p-6 border-b border-foreground/10 bg-background 
-        transition-all duration-300 ease-in-out
-        opacity-0 -translate-y-2 pointer-events-none"
-        >
-          <div className="flex flex-col gap-4">
-            {Object.entries(navItems).map(([path, { name }]) => {
+              const isExternal = path.startsWith("http");
+              if (isExternal) {
+                return (
+                  <a
+                    key={path}
+                    href={path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-primary transition-colors"
+                  >
+                    {name}
+                  </a>
+                );
+              }
               return (
                 <Link
                   key={path}
                   href={path}
-                  className="text-primary opacity-100 w-full text-left hover:cursor-pointer transition-all hover:text-slate-900 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1 cursor-pointer"
+                  className="text-muted hover:text-primary transition-colors"
                 >
                   {name}
                 </Link>
               );
             })}
           </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 -mr-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              {mobileMenuOpen ? (
+                <>
+                  <path d="M6 6L18 18" />
+                  <path d="M6 18L18 6" />
+                </>
+              ) : (
+                <>
+                  <path d="M4 8H20" />
+                  <path d="M4 16H20" />
+                </>
+              )}
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className={`md:hidden pb-6 text-sm ${GeistMono.className}`}>
+            <div className="flex flex-col gap-4">
+              {Object.entries(navItems).map(([path, { name }]) => {
+                const isExternal = path.startsWith("http");
+                if (isExternal) {
+                  return (
+                    <a
+                      key={path}
+                      href={path}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted hover:text-primary transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {name}
+                    </a>
+                  );
+                }
+                return (
+                  <Link
+                    key={path}
+                    href={path}
+                    className="text-muted hover:text-primary transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {name}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
-    </>
+    </nav>
   );
 }

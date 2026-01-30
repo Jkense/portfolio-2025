@@ -1,12 +1,29 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #c738a9;
+  --color-cream: #fffdf9;
+  --color-muted: #747479;
+  --color-ds-gray: #57575d;
+  --color-border: #d1d1d6;
+  --color-divider: #f2f2f7;
+}
+
 @layer base {
-  @font-face {
-    font-family: "Geist";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/Roboto.woff2) format("woff2");
+  html {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  body {
+    background-color: var(--color-cream);
+  }
+
+  .font-mono {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
+  }
+
+  .font-serif {
+    font-family: var(--font-noto-serif), Georgia, serif;
   }
 }
 
@@ -16,6 +33,14 @@
 }
 
 :root {
+  /* Design system colors */
+  --color-cream: #fffdf9;
+  --color-muted: #747479;
+  --color-border: #d1d1d6;
+  --color-primary: #c738a9;
+  --color-ds-gray: #57575d;
+
+  /* Syntax highlighting */
   --sh-class: #2d5e9d;
   --sh-identifier: #354150;
   --sh-sign: #8996a3;
@@ -29,6 +54,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-cream: #0a0a0a;
     --sh-class: #4c97f8;
     --sh-identifier: white;
     --sh-keyword: #f47067;
@@ -59,6 +85,11 @@ html {
 
 .prose a {
   @apply underline transition-all decoration-gray-400 dark:decoration-gray-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose a:hover {
+  color: #c738a9;
+  text-decoration-color: #c738a9;
 }
 
 .prose .anchor:after {
@@ -98,19 +129,19 @@ html {
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2 font-serif;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 font-serif;
 }
 
 .prose h3 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2 font-serif;
 }
 
 .prose h4 {
-  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2 font-serif;
 }
 
 .prose strong {

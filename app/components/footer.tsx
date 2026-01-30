@@ -11,6 +11,7 @@ function ArrowIcon() {
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="ml-2"
     >
       <path
         d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
@@ -27,19 +28,19 @@ interface SocialLink {
 
 const socialLinks: SocialLink[] = [
   {
-    label: "github",
+    label: "Github",
     href: "https://github.com/Jkense",
   },
   {
-    label: "linkedin",
+    label: "Linkedin",
     href: "https://www.linkedin.com/in/jasperkense/",
   },
   {
-    label: "start-up",
+    label: "Startup",
     href: "https://www.leapfrogapp.com/",
   },
   {
-    label: "medium",
+    label: "Medium",
     href: "https://medium.com/@JasperKense",
   },
 ];
@@ -54,7 +55,6 @@ export default function Footer() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            // Disconnect observer after first trigger so animation only happens once
             if (footerRef.current) {
               observer.unobserve(footerRef.current);
             }
@@ -77,36 +77,37 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer ref={footerRef} className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        {socialLinks.map((link, index) => (
-          <motion.li
-            key={link.href}
-            initial={{ opacity: 0, y: 16 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-            transition={{
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: "easeOut",
-            }}
-          >
-            <a
-              className="group flex items-center transition-all hover:text-slate-900 dark:hover:text-neutral-100 cursor-pointer"
-              rel="noopener noreferrer"
-              target="_blank"
-              href={link.href}
+    <footer ref={footerRef} className="border-t border-border">
+      <div className="max-w-4xl mx-auto w-full px-6 lg:px-0 py-6">
+        <ul className="flex gap-9 flex-wrap">
+          {socialLinks.map((link, index) => (
+            <motion.li
+              key={link.href}
+              initial={{ opacity: 0, y: 16 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.1,
+                ease: "easeOut",
+              }}
             >
-              <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowIcon />
-              </span>
-              <p className="ml-2 h-7">{link.label}</p>
-            </a>
-          </motion.li>
-        ))}
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} &middot; made by me
-      </p>
+              <a
+                className="group flex items-center text-base hover:text-primary transition-colors"
+                rel="noopener noreferrer"
+                target="_blank"
+                href={link.href}
+              >
+                <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  {link.label}
+                </span>
+                <span className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowIcon />
+                </span>
+              </a>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
     </footer>
   );
 }
