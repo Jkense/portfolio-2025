@@ -1,112 +1,10 @@
 import Link from "next/link";
-import { getBlogPosts, type Metadata } from "app/blog/utils";
+import { getBlogPosts } from "app/blog/utils";
 import { GeistMono } from "geist/font/mono";
 
 type Props = {
   filterType?: "project" | "publication";
 };
-
-function parseReferences(references: string): { title: string; url: string }[] {
-  if (!references) return [];
-  return references.split(",").map((ref) => {
-    const [title, url] = ref.trim().split(":");
-    return {
-      title: title?.trim() || "",
-      url: url ? ref.substring(ref.indexOf(":") + 1).trim() : "",
-    };
-  });
-}
-
-function parseList(value: string): string[] {
-  if (!value) return [];
-  return value.split(",").map((item) => item.trim());
-}
-
-function ProjectMetadataGridRow({ metadata }: { metadata: Metadata }) {
-  const { timeline, team, role, skills, references } = metadata;
-
-  const hasContent = timeline || team || role || skills || references;
-  if (!hasContent) return null;
-
-  const teamList = parseList(team || "");
-  const roleList = parseList(role || "");
-  const skillsList = parseList(skills || "");
-  const referencesList = parseReferences(references || "");
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6 py-6">
-      {timeline && (
-        <div>
-          <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
-            Timeline
-          </h4>
-          <p className="text-sm text-ds-gray">{timeline}</p>
-        </div>
-      )}
-
-      {teamList.length > 0 && (
-        <div>
-          <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
-            Team
-          </h4>
-          <ul className="text-sm text-ds-gray space-y-1">
-            {teamList.map((member, i) => (
-              <li key={i}>{member}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {roleList.length > 0 && (
-        <div>
-          <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
-            Role
-          </h4>
-          <ul className="text-sm text-ds-gray space-y-1">
-            {roleList.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {skillsList.length > 0 && (
-        <div>
-          <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
-            Skills
-          </h4>
-          <ul className="text-sm text-ds-gray space-y-1">
-            {skillsList.map((skill, i) => (
-              <li key={i}>{skill}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {referencesList.length > 0 && (
-        <div>
-          <h4 className={`text-xs uppercase tracking-wide text-muted mb-2 ${GeistMono.className}`}>
-            References
-          </h4>
-          <ul className="text-sm space-y-1">
-            {referencesList.map((ref, i) => (
-              <li key={i}>
-                <a
-                  href={ref.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:opacity-70 transition-opacity underline underline-offset-2"
-                >
-                  {ref.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-}
 
 export function BlogPosts({ filterType }: Props = {}) {
   let allBlogs = getBlogPosts();
@@ -131,37 +29,12 @@ export function BlogPosts({ filterType }: Props = {}) {
       return 1;
     });
 
-  // For projects, show metadata grid. For publications, show simple list.
-  if (filterType === "project") {
-    return (
-      <div className="flex flex-col gap-0 divide-y divide-border">
-        {sortedPosts.map((post) => {
-          const displayTitle = post.metadata.shortTitle || post.metadata.title;
-
-          return (
-            <Link
-              key={post.slug}
-              href={`/${post.slug}`}
-              className="group py-6 hover:opacity-70 transition-opacity block"
-            >
-              {/* Title */}
-              <p className="text-base text-primary font-medium mb-2 group-hover:underline">
-                {displayTitle}
-              </p>
-              {/* Metadata grid */}
-              <ProjectMetadataGridRow metadata={post.metadata} />
-            </Link>
-          );
-        })}
-      </div>
-    );
-  }
-
-  // Publications: simple list format
   return (
     <div className="flex flex-col gap-4">
       {sortedPosts.map((post) => {
         const year = new Date(post.metadata.publishedAt).getFullYear();
+        const isOngoing = post.metadata.finishedAt === "ongoing";
+        const client = post.metadata.client || "";
         const displayTitle = post.metadata.shortTitle || post.metadata.title;
 
         return (
@@ -170,9 +43,10 @@ export function BlogPosts({ filterType }: Props = {}) {
             href={`/${post.slug}`}
             className="group flex flex-col gap-2"
           >
-            {/* First line: year */}
+            {/* First line: year + client/tag */}
             <div className={`flex gap-6 text-sm text-muted ${GeistMono.className}`}>
               <span>{year}</span>
+              <span>{isOngoing ? "ongoing" : client}</span>
             </div>
             {/* Second line: title */}
             <p className="text-base group-hover:text-primary transition-colors">

@@ -90,14 +90,18 @@ export function ArticleMetadataGrid({ metadata }: ArticleMetadataGridProps) {
           <ul className="text-sm space-y-1">
             {referencesList.map((ref, i) => (
               <li key={i}>
-                <a
-                  href={ref.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:opacity-70 transition-opacity underline underline-offset-2"
-                >
-                  {ref.title}
-                </a>
+                {ref.url ? (
+                  <a
+                    href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:opacity-70 transition-opacity underline underline-offset-2"
+                  >
+                    {ref.title}
+                  </a>
+                ) : (
+                  <span className="text-ds-gray">{ref.title}</span>
+                )}
               </li>
             ))}
           </ul>

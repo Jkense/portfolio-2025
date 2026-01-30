@@ -11,7 +11,7 @@ export default function ZoomableImage(props) {
         {...props}
         alt={props.alt}
         className={
-          "rounded-lg py-2cursor-zoom-in transition-transform duration-200 border border-slate-200 dark:border-slate-700 " +
+          "rounded-lg py-2 cursor-zoom-in transition-transform duration-200 border border-slate-200 dark:border-slate-700 bg-white " +
           (props.className || "")
         }
         onClick={() => setOpen(true)}

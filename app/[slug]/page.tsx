@@ -99,7 +99,7 @@ export default async function Blog({ params }) {
 
       {/* Hero image from metadata */}
       {hasHeroImageFromMeta && (
-        <div className="mb-8 rounded-lg overflow-hidden border border-border">
+        <div className="mb-8 rounded-lg overflow-hidden border border-border bg-white">
           <Image
             src={post.metadata.heroImage!}
             alt={post.metadata.title}
@@ -113,7 +113,7 @@ export default async function Blog({ params }) {
 
       {/* Hero image from content (backwards compatibility) */}
       {hasHeroImage && !hasHeroImageFromMeta && (
-        <div className="mb-8 rounded-lg overflow-hidden border border-border">
+        <div className="mb-8 rounded-lg overflow-hidden border border-border bg-white">
           <Image
             src={post.metadata.image!}
             alt={post.metadata.title}

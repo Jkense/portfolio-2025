@@ -14,4 +14,8 @@ export const fonts = {
   serif: notoSerif,
 };
 
-export const fontVariables = `${GeistSans.variable} ${GeistMono.variable} ${notoSerif.variable}`;
+// Build font variable string, handling Geist fonts that may not have variable property
+const geistSansVar = GeistSans.variable || "--font-geist-sans";
+const geistMonoVar = GeistMono.variable || "--font-geist-mono";
+
+export const fontVariables = `${geistSansVar} ${geistMonoVar} ${notoSerif.variable}`;
