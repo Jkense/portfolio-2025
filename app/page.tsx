@@ -44,7 +44,7 @@ export default function Page() {
             {
               period: "2020-2022",
               degree: "Double MSc. of engineering",
-              university: "Technical university of Delft",
+              university: "Delft University of Technology (TU Delft)",
               title: "design for interaction & strategic product design",
               highlights: [
                 "Specialisation in UXR, design methodology and digital design",
@@ -54,7 +54,7 @@ export default function Page() {
             {
               period: "2015-2019",
               degree: "BSc. of engineering",
-              university: "Technical university of Delft",
+              university: "Delft University of Technology (TU Delft)",
               title: "industrial design engineering",
               highlights: [
                 "Specialisation in industrial design and software design",
