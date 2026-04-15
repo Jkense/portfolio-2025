@@ -1,70 +1,189 @@
 ---
-title: "Leapfrog: AI-Powered User Research"
-publishedAt: "2023-06-08"
-finishedAt: "ongoing"
-summary: "Leapfrog streamlines qualitative research with AI-powered synthesis, real-time collaboration, and visual analytics."
+title: 'Leapfrog: AI-Powered User Research'
+publishedAt: '2023-06-08'
+finishedAt: 'ongoing'
+summary: 'I designed and built Leapfrog, a full-stack research platform that turns interviews into traceable insight through transcription, AI-assisted synthesis, real-time collaboration, and visual analysis.'
 type: project
-projectLink: "https://leapfrogapp.com"
+projectLink: 'https://leapfrogapp.com'
 priority: 0
-client: "leapfrog"
-shortTitle: "user research software"
-timeline: "2023-Ongoing"
-team: "Solo founder & partners"
-role: "Founder, Product designer, Software engineer"
-skills: "Full-stack engineering, Product design, User research, AI/ML"
-references: "website:https://leapfrogapp.com"
-heroImage: "/leapfrog/banner.png"
+client: 'leapfrog'
+shortTitle: 'user research software'
+timeline: '2023-Ongoing'
+team: 'Solo founder & partners'
+role: 'Founder, Product designer, Full-stack engineer'
+skills: 'Full-stack engineering, Product design, Systems design, AI/ML'
+references: 'website:https://leapfrogapp.com'
+heroImage: '/leapfrog/banner.png'
 ---
 
-[Leapfrog](https://leapfrogapp.com) is user research tooling that helps user researcher and user research teams distill insights from qualitative data, like user interviews. By combining the grounded theory method with artificial intelligence, users can analyze their data at mass.
-
-This project started just before the big AI boom, when I was frustrated with the way we had to manually transcribe and code user interviews. Often times I would find myself dragging notes on online whiteboards, finding data across laptops and losing track of "who said what"? Our interview data would just become too much, and we would have too much data to humanly cross reference. I figured that the way we were doing things could easily be done by a computer.
-
-## The start of the journey
-
-I started by writing a [post](https://medium.com/user-experience-design-1/ai-is-going-to-change-ux-research-forever-500ec0548b87) online, and quickly found traction in the form of 700 likeminded researchers, who signed up for my email list.
-
-With that in mind, I started building Leapfrog. I wanted to create a tool that would help user researchers and user research teams distill insights from qualitative data, like user interviews. By combining the grounded theory method with artificial intelligence, users can analyze their data at mass.
-
-## The idea
-
-User research outputs lots of qualitative data, like recordings of conversations with participants. We often would take turns taking notes, as transcripts were not up to par (although they have been getting better and better ever since).
-
-With new technology, such as LLMs, we could now take some of that data, and create embeddings. This would allow us to do all kinds of analyses on the data pile, bringing user research from the qualitative to the quantitative realm. We would be able to cluster and group data, and even find relationships between different data points. This was what were mainly doing manually.
-
-## The tool
-
-Since conversations are semi-structured, we had to rely on a somewhat academic approach to keep our data segmented and organized. It is not uncommon to speak about the same subject throughout a conversation, just like in user research, where participants will often have participants coming back to earlier points. To tackle the irregularities in structure, Leapfrog uses the grounded theory method to highlight and tag data points. This way we take interesting remarks, and remove a lot of the noise from our transcript data.
-
-These tags and highlights can now be used to start analyzing our interviews. We can bring the data into a canvas, and start visualizing it. We can see how different data points are related to each other, and we can start to see patterns emerge. This way the user researcher can focus on the actual theory building, and not the data wrangling.
+[Leapfrog](https://leapfrogapp.com) is a user research platform I founded and built to help teams turn messy qualitative data into structured, defensible insight. I led the project across product strategy, interaction design, system design, and implementation, shaping both the user experience and the technical architecture behind it.
 
 <Image
-  src="/leapfrog/text-editor.png"
-  alt="Leapfrog highlights"
+  src="/leapfrog/Design Presentation-19.png"
+  alt="Leapfrog product overview"
+  width={1400}
+  height={500}
+/>
+
+The core problem was not just that research synthesis was slow. It was that the workflow broke down as soon as teams moved from interviews to interpretation. Transcripts lived in one tool, notes in another, clustering happened on a separate whiteboard, and conclusions ended up disconnected from the evidence that produced them. Once that happened, rigor dropped. Teams could see patterns, but they could not easily prove them.
+
+I wanted to build a system where synthesis stayed connected to source material all the way through.
+
+## The opportunity
+
+In 2023, I wrote a [post about how AI would change UX research](https://medium.com/user-experience-design-1/ai-is-going-to-change-ux-research-forever-500ec0548b87). It resonated quickly and brought in around 700 researchers to my email list.
+
+<Image
+  src="/leapfrog/Design Presentation-08.png"
+  alt="Early traction and interest around Leapfrog"
+  width={1200}
+  height={700}
+/>
+
+That response validated two things for me:
+
+- The pain around qualitative synthesis was real
+- Researchers were actively looking for tools that could help without sacrificing rigor
+
+That became the starting point for Leapfrog.
+
+## My role
+
+This was a true design-engineering project. I was not only designing screens. I was designing the workflow, the data model, and the system boundaries that made the experience possible.
+
+I was responsible for:
+
+- Defining the product thesis and core workflow
+- Designing the interaction model for transcripts, highlights, tags, and synthesis
+- Building the product in Next.js across front-end UI, back-end logic, API routes, and webhooks
+- Modeling the data layer in Firestore and using permissions to safeguard workspace access
+- Implementing real-time collaboration with Liveblocks and Yjs
+- Building the transcription, retrieval, and AI chat pipeline
+- Shipping integrations for email, Google Drive, storage, analytics, monitoring, and testing
+
+## Designing for traceability
+
+One of the most important product decisions was to treat grounded theory not just as a research method, but as a product design principle.
+
+<Image
+  src="/leapfrog/auto-coding.png"
+  alt="Leapfrog highlights and tagging workflow"
   width={1020}
   height={480}
 />
 
-## The product
+Instead of flattening interviews into generic summaries, I designed Leapfrog around a chain of traceable evidence:
 
-Initially this project started with building the wrong thing. You might think it is an easy job to build an idea into a product, but in this case we were so deep into AI related interactions that it was hard to prototype any product. I had to rely on good old programming to be able to validate my ideas with the interested parties.
+- Transcript as the source record
+- Highlights as the smallest meaningful unit of evidence
+- Tags as reusable structure across documents
+- Clusters and canvases as higher-level synthesis
 
-## Lessons learned
+That model shaped both the interface and the underlying architecture. It gave users a fast way to move upward from raw material to patterns, while preserving a direct path back to what people actually said.
 
-Building Leapfrog has been a journey of constant iteration. Early prototypes were rough, but they allowed me to test the core value: could AI actually help researchers synthesize qualitative data faster, without losing nuance? The answer was yes—but only when the workflows were designed for real research habits, not just for the sake of using AI.
+<Image
+  src="/leapfrog/Design Presentation-29.png"
+  alt="Traceable insights connected back to source transcript data"
+  width={1000}
+  height={700}
+/>
 
-I learned that user researchers care deeply about transparency and control. Black-box AI outputs are not enough; people want to see how insights are generated, trace them back to the original data, and adjust the process as needed. This led to features like traceable highlights, collaborative tagging, and the ability to audit every AI-generated suggestion.
+This ended up being the core product differentiator. Researchers do not just want output. They want confidence in how the output was formed.
 
-## Where Leapfrog is now
+## Engineering the platform
 
-Leapfrog is now a collaborative platform for research teams to upload, transcribe, tag, and synthesize interviews—together and in real time. The tool supports:
+Leapfrog became a full-stack system, not just a feature concept. I designed the platform so that each part of the stack had a clear role:
 
-## What’s next
+- `Next.js` for the front end, back-end logic, API routes, and webhook handling
+- `Firestore` as the primary database for users, organizations, workspaces, documents, transcript metadata, invites, and settings
+- `Firestore permissions` to safeguard access at the workspace and organization level
+- `GCP file storage` for uploaded media and document assets
+- `Google APIs` for Drive import and OAuth-based file access
+- `Liveblocks + Yjs` for real-time collaborative document state, comments, presence, and syncing
+- `AssemblyAI` for transcript generation
+- `ChromaDB` for vector indexing and retrieval
+- An `AI gateway / LLM layer` for grounded chat interactions over research data
+- `Resend` for transactional email
+- `Sentry` for monitoring errors across client and server
+- `PostHog` for product analytics on consent
+- `Google Analytics` for marketing analytics on consent
+- `GitHub Actions` for automated test coverage
 
-Leapfrog is in active development, with new features shipping every month. The focus is on making qualitative research faster, more transparent, and more collaborative—without sacrificing rigor. Upcoming work includes:
+One of the key engineering decisions was to keep a clear separation of concerns:
 
-If you’re interested in trying Leapfrog or want to collaborate, visit [leapfrogapp.com](https://leapfrogapp.com) or reach out directly. I’m always looking for feedback from real researchers to make the tool even better.
+- Firestore as the system of record
+- Liveblocks as the live collaboration layer
+- ChromaDB as the semantic retrieval layer
+- The AI chat layer as an assistant over evidence, not a replacement for evidence
+
+That separation made the product easier to reason about, easier to extend, and more trustworthy in use.
+
+## How the system ties together
+
+<Image
+  src="/leapfrog/system-design.png"
+  alt="Leapfrog product evolution from early prototype to refined workflow"
+  width={1000}
+  height={700}
+/>
+
+The product works as one connected pipeline:
+
+1. A researcher uploads interview media or imports files from Google Drive.
+2. Media is stored in GCP file storage and metadata is written to Firestore.
+3. The app sends audio to AssemblyAI for transcription.
+4. AssemblyAI returns results asynchronously through webhooks to the Next.js backend.
+5. Transcript content is inserted into the collaborative document model in Liveblocks/Yjs.
+6. Document changes are chunked and indexed into ChromaDB for retrieval.
+7. The chat experience pulls relevant context from Firestore and ChromaDB, sends it through the AI layer, and streams grounded responses back into the UI.
+8. Resend handles workflow email such as invites and transcript notifications.
+9. Sentry, consent-based analytics, and GitHub Actions support reliability, observability, and quality as the product evolves.
+
+What I like about this architecture is that it mirrors the product thesis. The system is designed around preserving context, not losing it.
+
+## Building the right thing
+
+One of the hardest lessons in the project was that the first versions were too focused on the novelty of AI itself.
+
+It is easy to imagine impressive AI features. It is much harder to build a workflow that fits the habits, skepticism, and standards of real research teams. Static prototypes were not enough. The interaction model was too new, and too dependent on real data, to validate in Figma alone.
+
+I had to build working software early, put it in front of researchers, and learn from actual use. That shifted the direction of the product in a meaningful way:
+
+- From one-shot AI outputs to structured, inspectable workflows
+- From generic summaries to traceable highlights and evidence
+- From isolated prompting to collaborative synthesis
+- From AI novelty to researcher trust and control
+
+This was one of the clearest examples in my work of code becoming the prototype.
+
+## What I learned
+
+Leapfrog taught me a lot about designing AI products for expert users.
+
+The biggest lesson was that trust is a product feature. In high-stakes workflows, people do not want magic. They want acceleration with visibility. The most valuable AI patterns were the ones that kept evidence inspectable and reasoning legible.
+
+It also reinforced something I care about as a design engineer: the interaction model and the system design are often inseparable. The UX here only works because the architecture supports traceability, live collaboration, asynchronous processing, and retrieval grounded in source material.
+
+## Why this project matters to me
+
+Leapfrog sits at the intersection of the work I most want to do: product thinking, interface design, systems design, and applied AI.
+
+It is the strongest example in my portfolio of operating end to end:
+
+- Identifying the opportunity through research and writing
+- Defining the product thesis
+- Designing a new interaction model
+- Building the full-stack system required to make it real
+- Iterating from real usage rather than speculative prototypes
+
+As a founder, designer, and engineer on the project, I was responsible for both the experience users saw and the infrastructure that made that experience credible.
+
+## What is next
+
+Leapfrog is still evolving. The next phase is focused on making team workflows more fluid, deepening the connection between evidence and synthesis, and continuing to improve how AI supports research without turning the process into a black box.
+
+If you are interested in the product, visit [leapfrogapp.com](https://leapfrogapp.com).
 
 ---
 
-_References: [Leapfrog website](https://www.leapfrogapp.com)_
+_References: [Leapfrog website](https://leapfrogapp.com), [AI Is Going to Change UX Research Forever](https://medium.com/user-experience-design-1/ai-is-going-to-change-ux-research-forever-500ec0548b87)_
