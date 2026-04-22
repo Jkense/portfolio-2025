@@ -19,10 +19,14 @@ export default function Page() {
           digital designer and software engineer
         </h1>
         <p className="text-ds-gray text-base leading-relaxed">
-          I build impactful digital products by combining engineering and
-          design. I enjoy working directly with users, shaping clear user
-          experiences and implementing ideas directly into the codebase. My goal
-          is to create the best possible experience for users.
+          I build high-quality, interactive interfaces and care deeply about how
+          things look, feel, and perform. My work sits at the intersection of
+          design and engineering — but I approach problems from a builder’s
+          perspective.
+          <br />
+          Recently, I’ve been developing full-stack products, exploring
+          AI-driven tools, and sharpening my frontend skills to create fast,
+          scalable, and intuitive user experiences.
         </p>
       </div>
 
