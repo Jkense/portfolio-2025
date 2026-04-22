@@ -20,13 +20,13 @@ export default function Page() {
         </h1>
         <p className="text-ds-gray text-base leading-relaxed">
           I build high-quality, interactive interfaces and care deeply about how
-          things look, feel, and perform. My work sits at the intersection of
-          design and engineering — but I approach problems from a builder’s
-          perspective.
-          <br />
-          Recently, I’ve been developing full-stack products, exploring
-          AI-driven tools, and sharpening my frontend skills to create fast,
-          scalable, and intuitive user experiences.
+          things look, feel, and perform. I approach problems from a builder’s
+          perspective, using code as the primary tool.
+        </p>
+        <p className="text-ds-gray text-base leading-relaxed">
+          I leverage agentic coding workflows to translate user needs directly
+          into working software, and I’m currently focused on building
+          full-stack products and exploring AI-driven interfaces.{" "}
         </p>
       </div>
 
