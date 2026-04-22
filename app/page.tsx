@@ -23,7 +23,7 @@ export default function Page() {
           things look, feel, and perform. I approach problems from a builder’s
           perspective, using code as the primary tool.
         </p>
-        <p className="text-ds-gray text-base leading-relaxed">
+        <p className="pt-2 text-ds-gray text-base leading-relaxed">
           I leverage agentic coding workflows to translate user needs directly
           into working software, and I’m currently focused on building
           full-stack products and exploring AI-driven interfaces.{" "}
