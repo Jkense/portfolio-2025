@@ -22,7 +22,9 @@ export function Navbar() {
   return (
     <nav className="border-b border-border">
       <div className="max-w-4xl mx-auto w-full px-6 lg:px-0">
-        <div className={`flex items-center justify-between py-6 text-sm ${GeistMono.className}`}>
+        <div
+          className={`flex items-center justify-between py-6 text-sm ${GeistMono.className}`}
+        >
           {/* Left: Branding */}
           <div className="flex items-center gap-10 flex-1">
             <Link href="/" className="flex items-center gap-10">
@@ -30,7 +32,7 @@ export function Navbar() {
                 Jasper Kense
               </span>
               <span className="text-muted hidden sm:inline">
-                Product Designer & Engineer
+                Design Engineer
               </span>
             </Link>
           </div>

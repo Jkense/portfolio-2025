@@ -10,13 +10,13 @@ import { fonts, fontVariables } from "./fonts";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Jasper Kense | Software Engineer & Designer",
+    default: "Jasper Kense | Design Engineer",
     template: "%s | Jasper Kense",
   },
   description:
     "Software engineer and designer passionate about creating impactful products. Founder of Leapfrog, combining technical expertise with design thinking.",
   openGraph: {
-    title: "Jasper Kense | Software Engineer & Designer",
+    title: "Jasper Kense | Design Engineer",
     description:
       "Software engineer and designer passionate about creating impactful products. Founder of Leapfrog, combining technical expertise with design thinking.",
     url: baseUrl,
