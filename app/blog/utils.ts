@@ -1,6 +1,16 @@
 import fs from "fs";
 import path from "path";
 
+export type TOCHeading = {
+  text: string;
+  slug: string;
+  level: number;
+  isEngineering: boolean;
+  kind: "bookmark";
+  section: "design" | "engineering";
+  domains?: string[];
+};
+
 export type Metadata = {
   title: string;
   publishedAt: string;
@@ -69,6 +79,64 @@ function getMDXData(dir) {
 
 export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
+}
+
+function parseTagAttributes(attributeString: string): Record<string, string> {
+  const attributes: Record<string, string> = {};
+  const attributeRegex = /(\w+)=["']([^"']*)["']/g;
+  let match;
+
+  while ((match = attributeRegex.exec(attributeString)) !== null) {
+    attributes[match[1]] = match[2];
+  }
+
+  return attributes;
+}
+
+function slugify(str: string): string {
+  return str
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+}
+
+export function extractHeadings(content: string): TOCHeading[] {
+  const bookmarkRegex = /<Bookmark\s+([^>]*?)\s*\/>/gm;
+  const headings: Array<TOCHeading & { index: number }> = [];
+  let match;
+
+  while ((match = bookmarkRegex.exec(content)) !== null) {
+    const attributes = parseTagAttributes(match[1]);
+    const label = attributes.label?.trim();
+
+    if (!label) continue;
+
+    const section =
+      attributes.section === "design" ? "design" : "engineering";
+    const domains = attributes.domains
+      ?.split(",")
+      .map((domain) => domain.trim())
+      .filter(Boolean);
+
+    headings.push({
+      text: label,
+      slug: attributes.slug || slugify(`${section}-${label}`),
+      level: 3,
+      isEngineering: section === "engineering",
+      kind: "bookmark",
+      section,
+      domains,
+      index: match.index,
+    });
+  }
+
+  return headings
+    .sort((a, b) => a.index - b.index)
+    .map(({ index, ...heading }) => heading);
 }
 
 export function formatDate(date: string, includeRelative = false) {

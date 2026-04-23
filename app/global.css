@@ -45,7 +45,7 @@
   --color-ds-gray: #57575d;
 
   /* Fonts - fallback if not set by font loader */
-  --font-geist-sans: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
+  --font-geist-sans: system-ui, -apple-system, "Segoe UI", "Roboto", sans-serif;
 
   /* Syntax highlighting */
   --sh-class: #2d5e9d;
@@ -142,11 +142,13 @@ html {
 .prose h2 {
   @apply text-xl font-medium tracking-tight mt-6 mb-2;
   font-family: inherit;
+  scroll-margin-top: 2rem;
 }
 
 .prose h3 {
   @apply text-xl font-medium tracking-tight mt-6 mb-2;
   font-family: inherit;
+  scroll-margin-top: 2rem;
 }
 
 .prose h4 {

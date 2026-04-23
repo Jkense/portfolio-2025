@@ -5,18 +5,26 @@ import { useState } from "react";
 
 export default function ZoomableImage(props) {
   const [open, setOpen] = useState(false);
+
+  // Extract width and height, provide defaults if missing
+  const { width = 896, height = 504, ...imageProps } = props;
+
   return (
     <>
-      <Image
-        {...props}
-        alt={props.alt}
-        className={
-          "rounded-lg cursor-zoom-in transition-transform duration-200 border border-slate-200 dark:border-slate-700 bg-white " +
-          (props.className || "")
-        }
-        onClick={() => setOpen(true)}
-        style={{ maxWidth: "100%", ...props.style }}
-      />
+      <div className="relative w-full">
+        <Image
+          {...imageProps}
+          width={width}
+          height={height}
+          alt={props.alt}
+          className={
+            "rounded-lg cursor-zoom-in transition-transform duration-200 border border-slate-200 dark:border-slate-700 bg-white w-full h-auto " +
+            (props.className || "")
+          }
+          onClick={() => setOpen(true)}
+          style={{ maxWidth: "100%", ...props.style }}
+        />
+      </div>
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
@@ -24,7 +32,9 @@ export default function ZoomableImage(props) {
         >
           <div className="relative w-full flex items-center justify-center">
             <Image
-              {...props}
+              {...imageProps}
+              width={width}
+              height={height}
               alt={props.alt}
               className="rounded-lg shadow-2xl max-h-[90vh] max-w-full cursor-zoom-out bg-white"
               onClick={() => setOpen(false)}

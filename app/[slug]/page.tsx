@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { formatDate, getBlogPosts } from "app/blog/utils";
+import { formatDate, getBlogPosts, extractHeadings } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { CustomMDX } from "app/components/mdx";
 import ZoomableImage from "app/components/image/zoomable-image";
 import { ArticleMetadataGrid } from "app/components/article-metadata-grid";
+import { TableOfContents } from "app/components/table-of-contents";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -66,6 +67,7 @@ export default async function Blog({ params }) {
   const isProject = post.metadata.type === "project";
   const hasHeroImage = post.metadata.image;
   const hasHeroImageFromMeta = post.metadata.heroImage;
+  const headings = extractHeadings(post.content);
 
   return (
     <section className="py-8">
@@ -80,9 +82,10 @@ export default async function Blog({ params }) {
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image || post.metadata.heroImage
-              ? `${baseUrl}${post.metadata.image || post.metadata.heroImage}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+            image:
+              post.metadata.image || post.metadata.heroImage
+                ? `${baseUrl}${post.metadata.image || post.metadata.heroImage}`
+                : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               "@type": "Person",
@@ -127,6 +130,16 @@ export default async function Blog({ params }) {
 
       {/* Metadata grid (projects only) */}
       {isProject && <ArticleMetadataGrid metadata={post.metadata} />}
+
+      {/* Table of Contents — fixed sidebar on wide screens */}
+      {headings.length > 0 && (
+        <aside
+          className="hidden min-[1440px]:block fixed top-24 w-52"
+          style={{ left: "calc(50% + 30rem)" }}
+        >
+          <TableOfContents headings={headings} />
+        </aside>
+      )}
 
       {/* Content */}
       <article className="prose mt-8">

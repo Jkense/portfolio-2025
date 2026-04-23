@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { highlight } from "sugar-high";
 import React from "react";
 import ZoomableImage from "app/components/image/zoomable-image";
+import { Bookmark } from "app/components/mdx-bookmark";
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -89,6 +90,7 @@ let components = {
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
+  Bookmark,
   Image: ZoomableImage,
   a: CustomLink,
   code: Code,
