@@ -1,17 +1,14 @@
 "use client";
-
 import Image from "next/image";
 import { useState } from "react";
 
 export default function ZoomableImage(props) {
   const [open, setOpen] = useState(false);
-
-  // Extract width and height, provide defaults if missing
-  const { width = 896, height = 504, ...imageProps } = props;
+  const { width = 896, height = 504, caption, ...imageProps } = props;
 
   return (
     <>
-      <div className="relative w-full">
+      <figure className="relative w-full m-0">
         <Image
           {...imageProps}
           width={width}
@@ -24,7 +21,13 @@ export default function ZoomableImage(props) {
           onClick={() => setOpen(true)}
           style={{ maxWidth: "100%", ...props.style }}
         />
-      </div>
+        {caption && (
+          <figcaption className="mt-2 text-sm text-slate-500 dark:text-slate-400 leading-snug">
+            {caption}
+          </figcaption>
+        )}
+      </figure>
+
       {open && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"

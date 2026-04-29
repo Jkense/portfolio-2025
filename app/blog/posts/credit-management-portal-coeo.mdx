@@ -15,71 +15,67 @@ skills: "Product design, Data visualization, Systems thinking, Figma, User resea
 references: "website:https://www.coeo.nl"
 ---
 
-The credit management portal for coeo was a design problem about complexity. Clients needed a place where they could monitor portfolios, understand financial performance, and take action when needed. The existing tools already contained a lot of data, but not enough structure. Users could access information, yet still struggle to answer simple questions: what changed, what matters, and what should I do next?
+The credit management portal for coeo started off as a design problem about complexity. The internal systems were very much legacy, and need a big UX update. At the same time, the pressure on the sales team with simple questions was on a rise.
 
-I led the product design of the new portal with a focus on analytical clarity. The goal was not to make the interface look more modern. It was to turn a dense financial environment into something more legible, actionable, and maintainable. That meant working across user research, information architecture, data visualization, workflow design, and close collaboration with engineering.
+I personally saw this as a chance given by management to show the power of design to lighten some of the burdens around the company. It's always was hard to put a number on design, but this time I think I could show some real arm strength.
 
-## The core challenge
+That means that my own most important stakeholders are actually sales, marketing, IT (who play a key role in customer sucess) and management. The project kicked off with a round of low-hanging fruit sessions, which quickly turned into a hard set of requirements for this design sprint.
 
-Analytical products often fail in the same way: they expose a lot of data but do very little to help users interpret it. That was the central issue here. Existing dashboards showed too much at once, with weak hierarchy and limited guidance. Users had access to metrics, but not always to understanding.
+From here we prioritized:
+* Establishing a design system with a clear design language
+* Self-service after onboarding for delivering, handling and updating files
+* One all-in-one portal for several user groups (integration engineers, accounts receivables handlers and financial management)
 
-That became especially visible across user types. Portfolio managers needed control and scale. Analysts needed filtering, comparisons, and export logic. Smaller clients needed a simpler way to understand portfolio health without being buried in detail. Internal support teams also needed a version of the truth they could quickly read and explain.
+## The idea
 
-The portal had to support all of those needs without collapsing into either of two bad extremes: overly simplified reporting for power users, or an overloaded control panel for everyone else.
+That user group made for a two folded solution space, with a 
+
+- make it easy for management to have a high over glance
+- make it easy for devs to test
+- make the dashboard extensible and future proof
+- make the A/R employees have an easier time navigating and mass-handling files
 
 ## My role
 
-I owned the product direction and design of the portal. That included defining the UX principles, structuring the information architecture, designing the main analytical flows, and working closely with engineers during implementation and maintenance.
+From the initial meeting with management, I turned stakeholder interviews into a hard set of sprintable goals
 
+we worked on a weekly basis, with engineering implementing in parralel
+
+the difficulty of this appraoch was the parralel nature and async nature of design. sometimes, we had to reverse design decisiions. This was a natural occurence, but sometimes created slight friction.
+
+We did manage, however, to find a rythm that worked, with a final call being made by the CEO whenever we were stuck.
 
 <Image
   src="/coeo-financial-portal/file-view.png"
-  alt="Figma design for a single file view in the financial portal"
-  width={1200}
-  height={800}
+  alt="Single file view showing debt case details, status indicators, and action controls"
+  width={1920}
+  height={1080}
+  caption="The file view gives portfolio managers a structured overview of an individual case — status, timeline, financials, and available actions — without requiring them to switch contexts. All data shown is illustrative and contains no real user information."
 />
 
 My role sat between interface design and systems thinking. I was not just deciding how charts should look. I was deciding how users move from overview to diagnosis to action, how different layers of information should relate to each other, and how the product could stay understandable as more data and features were added over time.
-
-## Research and framing
-
-The first phase of the project focused on understanding how different users made decisions with portfolio data. I looked at the product less as a dashboard and more as a decision environment.
-
-A few patterns emerged quickly. Users did not want more raw data. They wanted help identifying what was relevant. They also did not all need the same interface. Some users worked at a high level and only occasionally drilled into individual cases. Others spent much more time comparing trends, filtering segments, and exporting data for further analysis.
-
-This made progressive disclosure a central design principle from the start. The portal needed to begin with a clear summary of portfolio state, then let users move deeper only when they needed more precision. That sounds obvious, but in analytical products it is often where things break down. Teams try to satisfy every user at once, and the result is an interface with too many signals competing for attention.
 
 ## Designing the information model
 
 <Bookmark label="Information architecture" section="design" domains="Product architecture, Information architecture, Data visualization" />
 
-The most important design decision was to organize the portal around user intent rather than around data sources or internal system structure.
+The most important design decision was to organize the portal around user intent rather than around data sources or internal system structure. We wanted navigation to solve the pains that sales and IT was hearing during their customer calls
 
-Instead of asking users to navigate by technical categories, I designed the portal around a small number of product areas:
+Instead of relying on irregular shaped ux, I prioritized a typical dashbaord, that helped destructure and simplify ux across the board.
 
-- overview and monitoring
-- portfolio management
-- analytics and reporting
-- settings and configuration
+Iconography, color choice, and common ux patterns such as modals, table design were all brought into the design system as a conscuious choice, to make the navigation as simple as possible.
 
-That gave the product a clearer shape. The overview helped users assess the state of their portfolio quickly. Portfolio management supported operational work on accounts and bulk actions. Analytics and reporting handled deeper investigation and export scenarios. Settings made room for personalization without polluting primary workflows.
+This is not only important for the current flow of the product, but for the strategic need that was stated by management in the long run too. 
 
-This structure also helped engineering. It created cleaner boundaries between feature areas and made it easier to reason about what belonged where as the product expanded.
+That gave the product a clearer shape.
 
 ## From dashboards to decision-making
 
-A core principle throughout the project was that the interface should prioritize insight over display. I did not want the main dashboard to feel like a collection of charts. It needed to function as a reading of the portfolio.
+A core principle throughout the project was that the interface should prioritize insight over display. I did not want the main dashboard to feel like a collection of charts. It needed to function as a high over view for management, IT and A/R to understand their case loads.
 
-That meant designing the default experience around a small number of important signals, with strong visual hierarchy and clear pathways into deeper analysis. The landing view had to answer a few questions immediately:
+That meant that I included a less minimal design phase during the sprints, which were eventually left out due to resource limitations from the IT team, taht wcould be possible ays to extend the product long term. 
 
-- what is the current state of the portfolio
-- what changed recently
-- where are the risks or opportunities
-- what can I do next
-
-That framing changed how metrics were presented. Rather than treating every number as equally important, I designed the dashboard to create a sequence of attention. Summary metrics came first. Trends and anomalies followed. Detailed breakdowns and filters appeared only once users stepped into a more investigative mode.
-
-This was a product design decision, but it also had a systems quality to it. The UI needed to reflect the mental model of the work.
+This included a few more complicated graphs, heavily inspired by common analytical software, and would allow the same teams to get interesting insights that would otherwise be difficult to spot, such as a geographical case spread and performance, a drop in behaviour in, for example, text message traffic that could directly signify the IT team and emails for a high over view for management.
 
 ## Designing for multiple levels of expertise
 
@@ -90,17 +86,10 @@ This was a product design decision, but it also had a systems quality to it. The
   height={800}
 />
 
-One of the harder parts of the project was supporting both expert and non-expert users in the same product. Analytical tools often assume a fairly high level of data fluency, but that was not always realistic here. Some clients needed depth. Others needed orientation.
-
-The solution was not to create separate products. It was to create an interface that scaled. High-level views stayed readable and focused. Drill-down layers allowed more advanced users to inspect segments, compare states, and move into more detailed reporting. This let the product feel approachable at the top level without becoming shallow underneath.
-
-Customizability also played a role, but I treated it carefully. Too much configurability can push design complexity back onto the user. Instead of making everything configurable, I focused on allowing users to adapt views around the metrics and perspectives most relevant to their role, while keeping the default experience coherent.
-
-## Data visualization as interface design
+## Taking it one step further to show the possibilitesi to management
 
 <Bookmark label="Data visualization" section="design" domains="Data visualization, Interaction design, Accessibility" />
 
-A large part of the work was in how data got translated into visual form. In financial products, poor visualization creates both usability problems and trust problems. If people cannot tell what they are looking at quickly, they stop trusting the interface.
 
 <Image
   src="/coeo-financial-portal/graph.png"
@@ -109,46 +98,24 @@ A large part of the work was in how data got translated into visual form. In fin
   height={800}
 />
 
-I treated charts, tables, filters, and comparisons as interaction design, not just presentation. The important question was never just which chart type to use. It was how a user would interpret it, compare it with something else, and move from that interpretation into action.
-
-Accessibility mattered here too. Analytical interfaces are often designed visually first and only later checked for compliance. I wanted the opposite. Visualizations needed to remain understandable through hierarchy, labeling, contrast, structure, and assistive support. That meant avoiding charts that looked impressive but collapsed under real use, especially when clarity and scanability were more important than density.
+we took it beyond the mvp only in figma, but I want to share some fo the ideas here, that i mention before too.
 
 ## Technical thinking behind the design
 
 <Bookmark label="System design" section="engineering" domains="Front-end architecture, Data systems, Security and privacy" />
 
-Although my role on this project was primarily product and design, the work was closely tied to technical realities. Analytical portals only feel good when the underlying system supports fast filtering, responsive views, stable data states, and clear relationships between summary and detail.
+The design not only included important UX decisions, but also simple to implement design system challenges. That means that I, as a designer, could influence how we build with the dev team to speed up our workflow
 
-I worked closely with engineers around the shape of the product so the interface could hold up under real conditions. Performance was a design issue here, not just an engineering concern. If dashboards felt slow, if filters took too long to apply, or if views did not update predictably, the product would immediately feel less trustworthy.
+a couple of clear decisions were made:
+repeatable design sytems
+per ux flow sprints
+only include management when necessary
 
-The same was true for responsive behavior and real-time data. Users needed access across devices, but that did not mean shrinking a desktop dashboard onto a phone. It meant rethinking how much information appears at once, what remains primary on smaller screens, and how actions stay usable when space is limited.
-
-Security and privacy also shaped the experience. Because the portal dealt with sensitive financial information, the interface had to communicate control and reliability without becoming intimidating or overly technical. Good analytical products do not just expose data safely. They also make that safety legible to users.
-
-## Maintenance and product stewardship
-
-One part of the role I value in this project is reflected in the word maintainer. Designing the portal was not a one-off exercise. The product needed ongoing care as requirements evolved, new needs appeared, and implementation details surfaced over time.
-
-That kind of stewardship matters in analytical products. Once teams start relying on a portal operationally, small design issues become recurring friction. Maintaining coherence over time means protecting the system, not just the screens. It means keeping interaction patterns consistent, making sure new features fit the product model, and avoiding the slow drift into clutter that many enterprise tools suffer from.
+this rythm made for a leaner setup than normally done within the company. 
 
 ## Outcome
 
-The result was a credit management portal designed to help clients read their portfolios more clearly and work with them more effectively. The product brought more structure to analytical workflows, improved the clarity of high-level reporting, and created a better path from insight to action.
+The result was a credit management portal that not only performed better in security, development time, but most importantly, in how our users experience the product. The rpdoctu is crurently in a A/B rolluot, with feedback loops going through IT to implement according to the design sytem, autonomously.
 
-What I consider most successful about the project is not any one feature. It is that the portal became more interpretable. Users could start with a clear overview, move into details when necessary, and use the product with a better sense of orientation. That is a meaningful shift in a domain where complexity tends to accumulate quickly.
-
-## What I learned
-
-This project reinforced how much analytical design depends on restraint. It is easy to add another metric, another chart, another filter. It is much harder to create a product that helps users focus.
-
-It also sharpened my belief that data visualization is only one part of analytical UX. The real work is in structuring attention, supporting interpretation, and making interaction paths feel obvious even when the underlying domain is complex.
-
-More broadly, the portal was a good example of the kind of work I like most: product design that sits close to systems design. The value came from shaping the model behind the interface, not just the interface itself.
-
-## Why this project matters
-
-This project is important in my portfolio because it shows another side of my design work. Unlike more consumer-facing flows, this was a dense B2B environment with real complexity, multiple user types, and high expectations around clarity and trust.
-
-It reflects how I approach product design when the challenge is not invention but reduction: making complex systems easier to understand, easier to navigate, and more useful in practice. That is work I find deeply rewarding, and it is where a lot of my design judgment is strongest.
 
 _References: [coeo](https://www.coeo.nl)_
