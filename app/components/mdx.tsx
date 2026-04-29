@@ -4,6 +4,8 @@ import { highlight } from "sugar-high";
 import React from "react";
 import ZoomableImage from "app/components/image/zoomable-image";
 import { Bookmark } from "app/components/mdx-bookmark";
+import ImageCarousel from "./image/image-carousel";
+import { CarouselSlide } from "./image/image-carousel";
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -74,7 +76,7 @@ function createHeading(level) {
           className: "anchor",
         }),
       ],
-      children
+      children,
     );
   };
 
@@ -92,6 +94,8 @@ let components = {
   h6: createHeading(6),
   Bookmark,
   Image: ZoomableImage,
+  ImageCarousel,
+  CarouselSlide,
   a: CustomLink,
   code: Code,
   Table,

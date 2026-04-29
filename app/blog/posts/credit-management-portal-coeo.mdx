@@ -15,107 +15,126 @@ skills: "Product design, Data visualization, Systems thinking, Figma, User resea
 references: "website:https://www.coeo.nl"
 ---
 
-The credit management portal for coeo started off as a design problem about complexity. The internal systems were very much legacy, and need a big UX update. At the same time, the pressure on the sales team with simple questions was on a rise.
+coeo's internal systems were due for a rethink, as legacy tooling made even simple client questions dependent on sales and IT, while questions that a product should answer directly were handled manually. At the same time, support pressure increased, which created an opportunity to address both system complexity and operational load through design.
 
-I personally saw this as a chance given by management to show the power of design to lighten some of the burdens around the company. It's always was hard to put a number on design, but this time I think I could show some real arm strength.
+## The problem
 
-That means that my own most important stakeholders are actually sales, marketing, IT (who play a key role in customer sucess) and management. The project kicked off with a round of low-hanging fruit sessions, which quickly turned into a hard set of requirements for this design sprint.
+Portfolio data existed across disconnected systems, which meant that accounts receivable handlers had to switch between tools to manage a single case, management needed to rely on others to get a reliable overview, and integration engineers lacked a dedicated space for testing and debugging.
 
-From here we prioritized:
-* Establishing a design system with a clear design language
-* Self-service after onboarding for delivering, handling and updating files
-* One all-in-one portal for several user groups (integration engineers, accounts receivables handlers and financial management)
+This made the issue not only visual, but structural as well.
 
-## The idea
+## What we set out to build
 
-That user group made for a two folded solution space, with a 
+After stakeholder interviews with sales, marketing, IT, and management, three priorities emerged:
 
-- make it easy for management to have a high over glance
-- make it easy for devs to test
-- make the dashboard extensible and future proof
-- make the A/R employees have an easier time navigating and mass-handling files
+- A shared design system with a consistent visual language
+- Self-service file delivery, handling, and updates after onboarding
+- A single portal serving integration engineers, accounts receivable handlers, and financial management
+
+Each group worked with the same data, but approached it with different goals, which made balancing those needs central to the design process.
 
 ## My role
 
-From the initial meeting with management, I turned stakeholder interviews into a hard set of sprintable goals
+I led the project from kickoff to handoff, translating stakeholder input into sprint-ready goals, running weekly design cycles, and collaborating closely with engineering as they implemented in parallel.
 
-we worked on a weekly basis, with engineering implementing in parralel
+Because design and development moved asynchronously, decisions sometimes had to be revisited, which introduced friction at times, although we established a rhythm that allowed steady progress, with final decisions aligned with the CEO when needed.
 
-the difficulty of this appraoch was the parralel nature and async nature of design. sometimes, we had to reverse design decisiions. This was a natural occurence, but sometimes created slight friction.
-
-We did manage, however, to find a rythm that worked, with a final call being made by the CEO whenever we were stuck.
-
-<Image
-  src="/coeo-financial-portal/file-view.png"
-  alt="Single file view showing debt case details, status indicators, and action controls"
-  width={1920}
-  height={1080}
-  caption="The file view gives portfolio managers a structured overview of an individual case — status, timeline, financials, and available actions — without requiring them to switch contexts. All data shown is illustrative and contains no real user information."
-/>
-
-My role sat between interface design and systems thinking. I was not just deciding how charts should look. I was deciding how users move from overview to diagnosis to action, how different layers of information should relate to each other, and how the product could stay understandable as more data and features were added over time.
+My role sat between interface design and systems thinking, where I focused not only on how things looked, but also on how users move from overview to diagnosis to action, and how the system could remain understandable as it grows.
 
 ## Designing the information model
 
 <Bookmark label="Information architecture" section="design" domains="Product architecture, Information architecture, Data visualization" />
 
-The most important design decision was to organize the portal around user intent rather than around data sources or internal system structure. We wanted navigation to solve the pains that sales and IT was hearing during their customer calls
+The core decision was to structure the portal around user intent rather than internal systems or raw data structures, which meant focusing on what users need to understand and what actions they need to take next.
 
-Instead of relying on irregular shaped ux, I prioritized a typical dashbaord, that helped destructure and simplify ux across the board.
+Navigation was shaped by recurring questions identified by sales and IT during client interactions, while common UX patterns such as modals, tables, iconography, and color usage were standardized within a design system, ensuring consistency and making future expansion easier to manage.
 
-Iconography, color choice, and common ux patterns such as modals, table design were all brought into the design system as a conscuious choice, to make the navigation as simple as possible.
+## From dashboards to decisions
 
-This is not only important for the current flow of the product, but for the strategic need that was stated by management in the long run too. 
+The dashboard was designed to support decision-making rather than act as a collection of charts, providing a clear overview for management, IT, and A/R teams while guiding them toward relevant actions.
 
-That gave the product a clearer shape.
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-financial-portal/graph.png"
+    alt="High level dashboard showing portfolio overview, KPIs, and activity streams"
+    caption="The dashboard provides a high-level overview of portfolio performance, allowing different user groups to understand workload, trends, and priorities."
+  />
+  <CarouselSlide
+    src="/coeo-financial-portal/file-view.png"
+    alt="Single file view showing debt case details, status indicators, and action controls"
+    caption="The file view allows users to review a case, understand its timeline and financials, and take action without switching between systems."
+  />
+</ImageCarousel>
 
-## From dashboards to decision-making
+Together, these views support a flow from overview to detailed inspection, and then to action, without requiring users to move across multiple tools.
 
-A core principle throughout the project was that the interface should prioritize insight over display. I did not want the main dashboard to feel like a collection of charts. It needed to function as a high over view for management, IT and A/R to understand their case loads.
+## Core flows and interaction patterns
 
-That meant that I included a less minimal design phase during the sprints, which were eventually left out due to resource limitations from the IT team, taht wcould be possible ays to extend the product long term. 
+A large part of the project focused on designing repeatable flows that reduce friction in daily operations, especially for A/R teams working with large volumes of data.
 
-This included a few more complicated graphs, heavily inspired by common analytical software, and would allow the same teams to get interesting insights that would otherwise be difficult to spot, such as a geographical case spread and performance, a drop in behaviour in, for example, text message traffic that could directly signify the IT team and emails for a high over view for management.
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-financial-portal/upload-flow.png"
+    alt="File upload flow with validation, status feedback, and processing steps"
+    caption="The file upload flow guides users through validation and processing, reducing errors while making system feedback more transparent."
+  />
+  <CarouselSlide
+    src="/coeo-financial-portal/single-file-creation.png"
+    alt="Single file creation flow with structured inputs and validation"
+    caption="The single file creation flow supports structured input, helping users create new cases with clear validation and minimal friction."
+  />
+  <CarouselSlide
+    src="/coeo-financial-portal/modals.png"
+    alt="Modal system showing confirmations, edits, and inline actions"
+    caption="A consistent modal system handles confirmations, edits, and contextual actions, ensuring predictable interactions across the product."
+  />
+</ImageCarousel>
 
-## Designing for multiple levels of expertise
+These flows were designed as reusable patterns, which allowed engineering to implement them as consistent components rather than isolated solutions.
+
+## Designing for multiple user levels
 
 <Image
   src="/coeo-financial-portal/webhook.png"
-  alt="Webhooks are a specialized part of the application meant to help developers access their data"
+  alt="Webhooks interface for developers to configure and access data"
   width={1200}
   height={800}
+  caption="The webhook module provides technical controls for integration engineers, while remaining separate from workflows used by other user groups."
 />
 
-## Taking it one step further to show the possibilitesi to management
+The portal supports users with different levels of expertise, where integration engineers require detailed controls, A/R handlers need efficient workflows for handling volume, and management needs a clear overview without unnecessary detail.
+
+## What could come next
 
 <Bookmark label="Data visualization" section="design" domains="Data visualization, Interaction design, Accessibility" />
 
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-financial-portal/geo-graph.png"
+    alt="Wireframe showing geographic distribution of cases"
+    caption="This geographic view was explored in Figma to surface regional patterns in portfolio data, but remained outside the MVP scope."
+  />
+  <CarouselSlide
+    src="/coeo-financial-portal/email.png"
+    alt="Wireframe exploring email handling within the portal"
+    caption="This email flow was explored during wireframing to integrate communication into the product, but was not included in the MVP."
+  />
+</ImageCarousel>
 
-<Image
-  src="/coeo-financial-portal/graph.png"
-  alt="Graph view in the financial portal lowers the level of intensity for low-level users like C-levels"
-  width={1200}
-  height={800}
-/>
+We explored additional analytical features in Figma beyond the MVP scope, including geographic case distribution, communication activity trends, and behavioral patterns in portfolio performance, which were not implemented due to resource constraints but remain available for future development.
 
-we took it beyond the mvp only in figma, but I want to share some fo the ideas here, that i mention before too.
-
-## Technical thinking behind the design
+## Technical influence on the build
 
 <Bookmark label="System design" section="engineering" domains="Front-end architecture, Data systems, Security and privacy" />
 
-The design not only included important UX decisions, but also simple to implement design system challenges. That means that I, as a designer, could influence how we build with the dev team to speed up our workflow
+Design decisions influenced implementation directly, as a repeatable component system allowed the development team to work with reusable building blocks instead of isolated screens, while sprints were structured around user flows rather than individual features.
 
-a couple of clear decisions were made:
-repeatable design sytems
-per ux flow sprints
-only include management when necessary
-
-this rythm made for a leaner setup than normally done within the company. 
+Management involvement was limited to key decision points, which kept the process focused and reduced unnecessary review cycles, resulting in a more streamlined workflow compared to earlier projects.
 
 ## Outcome
 
-The result was a credit management portal that not only performed better in security, development time, but most importantly, in how our users experience the product. The rpdoctu is crurently in a A/B rolluot, with feedback loops going through IT to implement according to the design sytem, autonomously.
+The portal is currently in a staged rollout, with IT continuing implementation based on the design system, while early feedback is being collected and fed into ongoing iterations.
 
+One early signal is a reduction in basic client questions handled by the sales team, which reflects the initial goal of making information more accessible within the product.
 
 _References: [coeo](https://www.coeo.nl)_
