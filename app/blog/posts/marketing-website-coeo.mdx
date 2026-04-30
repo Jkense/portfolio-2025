@@ -2,166 +2,234 @@
 title: "Marketing Website - Designing the new coeo incasso marketing website"
 publishedAt: "2024-01-15"
 finishedAt: "2024-12-31"
-summary: "Designing a new marketing website for coeo incasso to better communicate the company's values and services."
+summary: "I redesigned coeo's marketing site into clearer sector-led pages and led the implementation work in two-week sprints."
 type: project
 priority: 0
 favicon: "/coeo/favicon.svg"
 client: "coeo"
 shortTitle: "marketing website"
 timeline: "Q3 2024 - Q4 2024"
-team: "Jasper Kense, 1 coeo team member, 1 external partner"
-role: "Lead designer, project manager, maintainer"
-skills: "Web design, Brand communication, Copywriting, Frontend development"
+team: "Jasper Kense, 1 coeo team member, 1 external implementation partner"
+role: "Lead designer, implementation lead, project manager"
+skills: "Web design, Brand communication, Copywriting, Frontend development, Sprint leadership, QA"
 references: "website:https://www.coeo.nl"
 ---
 
-## Overview
+## The problem
 
-The marketing website redesign for coeo incasso was a project focused on creating a modern, accessible web presence that accurately represents the company's commitment to inclusive debt collection practices. Building on the insights from previous projects, this website needed to communicate coeo's values while providing clear information about services and building trust with potential clients and debtors.
+The old marketing site had drifted into a pretty common legacy problem. The content was stale, the structure was hard to maintain, and sales and support kept getting pulled in to explain things the website should have handled on its own. Internal teams were spending time on questions that should have been answered by better navigation, better copy, and a better page structure.
 
-The main focus of this redesign was to give coeo a more fintech-oriented visual identity while maintaining the personal, human-centered approach that sets them apart. The goal was to align the website with coeo's branding in Germany, creating a cohesive brand experience across markets. Additionally, the website needed to speak to different sectors individually, providing tailored content and pathways for various industries and audiences.
+At the same time, coeo was trying to present a clearer commercial story without losing the practical tone that made the company work. That is usually where design either earns its keep or gets reduced to polish. I wanted this project to prove the first one.
 
-The existing website no longer reflected coeo's evolved approach to debt collection—one that prioritizes accessibility, clarity, and support. My goal was to create a website that balances modern fintech aesthetics with authentic, personal storytelling, showcases their inclusive practices, and provides clear pathways for different audiences to find the information they need.
+## Why I cared
 
-## The Challenge
+This was a good chance to show that design can do real work in a business context. If I could turn a messy, overworked site into something sales could trust, internal teams could maintain, and prospects could actually move through, that would save people time in the day-to-day. That matters more than a nice-looking homepage.
+
+## Kickoff
+
+The project started with coeo's marketing lead, one person who owned the day-to-day content, and an external partner on implementation. I stayed close to all three, because the work only made sense if we kept strategy, content, and build decisions in the same conversation.
+
+The early discussion was straightforward:
+
+- The site needed to explain the service without overselling it.
+- Different sectors needed different entry points.
+- The content had to work for both prospective clients and people in debt.
+- The build had to stay maintainable for a small team.
 
 <Bookmark label="Web strategy" section="design" domains="Information architecture, Brand strategy, Content design" />
 
-The original marketing website suffered from several issues:
+## The priorities
 
-**Outdated messaging**: The website didn't reflect coeo's commitment to inclusive debt collection practices and vulnerable user support that had been developed through research and previous projects.
+I turned those kickoff conversations into a small set of priorities I could actually design against:
 
-**Unclear value proposition**: Visitors struggled to understand what made coeo different from other debt collection agencies, and how their approach benefited both clients and debtors.
+1. Make the value proposition obvious in a few seconds.
+2. Give each sector its own route through the site.
+3. Keep the structure simple enough for the team to update.
+4. Reuse a shared system instead of inventing a new page pattern every time.
+5. Make support and debtor information easy to find without burying it in marketing language.
 
-**Poor information architecture**: Different audiences (clients, debtors, partners) and sectors had difficulty finding relevant information, leading to confusion and missed opportunities. The website didn't address the unique needs of different industries.
+That list became the filter for most of the design decisions that followed.
 
-**Brand misalignment**: The website didn't align with coeo's German branding, creating inconsistency across markets and missing opportunities for brand cohesion.
+## What each audience needed
 
-**Accessibility gaps**: The website wasn't designed with accessibility in mind, which contradicted coeo's values around inclusive design. This was especially problematic for debtors who needed accessible information and support.
+The site had to serve a few different groups without turning into a pile of tailored one-offs.
 
-**Mobile experience**: The website didn't work well on mobile devices, despite many users accessing it on smartphones.
+- Prospective clients in sectors like e-commerce, utility, and hosting needed proof that coeo understood their operating reality.
+- People in debt needed a direct path to support and payment help, not a soft marketing page that made them hunt around.
+- Partners and support organizations needed enough clarity to understand how coeo works and where to route people.
+- Sales and internal teams needed a structure they could point to instead of explaining the same things over and over.
 
-**SEO limitations**: The website wasn't optimized for search engines, limiting discoverability and organic traffic.
+That is the part where the scope could have exploded. It did not, because we kept forcing each audience question back to intent: what do they need next, and what page should answer that?
 
-## Design Process
+## Sector pages
 
-<Bookmark label="Brand architecture" section="design" domains="Brand design, Information architecture, UX writing" />
+The sector pages carried most of the commercial weight. Each one needed a slightly different emphasis, but all three still had to sit inside the same system so the team could maintain them without creating three separate sites.
 
-### Research & Discovery
+### E-commerce
 
-I began by understanding the different audiences and sectors that visit the website:
+For e-commerce, I focused on clarity, trust, and conversion routes. The page had to show that coeo understood high-volume, transaction-heavy environments and could communicate that without overexplaining it.
 
-**Potential clients across sectors**: Companies from different industries (retail, utilities, healthcare, etc.) considering coeo's services needed sector-specific information about processes, compliance, and results. Each sector has unique needs and concerns that required tailored content and pathways.
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-marketing/E-commerce-1.png"
+    alt="E-commerce sector page, hero and value proposition"
+    caption="E-commerce sector page, hero and value proposition."
+    width={1248}
+    height={2306}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/E-commerce-2.png"
+    alt="E-commerce sector page, proof points and service structure"
+    caption="E-commerce sector page, proof points and service structure."
+    width={1248}
+    height={2140}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/E-commerce-3.png"
+    alt="E-commerce sector page, contact and next-step routing"
+    caption="E-commerce sector page, contact and next-step routing."
+    width={1248}
+    height={2222}
+  />
+</ImageCarousel>
 
-**Debtors**: People with debts needed to understand coeo's approach, find support resources, and access the payment portal. For this audience, inclusive design was even more critical, requiring clear imagery, guidance, and accessibility features like Readspeaker read-aloud functionality.
+### Utility
 
-**Partners**: Organizations like schuldhulpinstanties and support agencies needed information about collaboration opportunities.
+The utility page needed to feel dependable and operationally clear. I kept the structure direct so visitors could quickly see the service model, the practical context, and the next step.
 
-**Job seekers**: Potential employees needed to understand coeo's mission and values.
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-marketing/Utility-1.png"
+    alt="Utility sector page, overview and sector proof"
+    caption="Utility sector page, overview and sector proof."
+    width={1248}
+    height={1721}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/Utility-2.png"
+    alt="Utility sector page, service explanation and content blocks"
+    caption="Utility sector page, service explanation and content blocks."
+    width={1248}
+    height={1721}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/Utility-3.png"
+    alt="Utility sector page, support path and conversion structure"
+    caption="Utility sector page, support path and conversion structure."
+    width={1248}
+    height={1754}
+  />
+</ImageCarousel>
 
-**Brand alignment research**: I analyzed coeo's German branding to ensure visual and messaging consistency across markets while adapting to local needs and regulations.
+### Hosting
 
-### Design Principles
+The hosting page leaned more into technical credibility. It needed to signal reliability, security, and clear support without losing the same visual system used across the rest of the site.
 
-<Bookmark label="Brand design" section="design" domains="Brand design, Responsive UX, Accessibility" />
+<ImageCarousel>
+  <CarouselSlide
+    src="/coeo-marketing/Hosting-1.png"
+    alt="Hosting sector page, technical overview and offer summary"
+    caption="Hosting sector page, technical overview and offer summary."
+    width={1248}
+    height={1652}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/Hosting-2.png"
+    alt="Hosting sector page, service detail and reassurance blocks"
+    caption="Hosting sector page, service detail and reassurance blocks."
+    width={1248}
+    height={1321}
+  />
+  <CarouselSlide
+    src="/coeo-marketing/Hosting-3.png"
+    alt="Hosting sector page, final call to action and support routing"
+    caption="Hosting sector page, final call to action and support routing."
+    width={1248}
+    height={1427}
+  />
+</ImageCarousel>
 
-Based on research, I established design principles:
+## Leading implementation
 
-1. **Fintech aesthetics with personal touch**: Balance modern, professional fintech visual language with warm, human-centered design that reflects coeo's personal approach to debt collection.
+I was not just handing over designs. I led the implementation effort with developers in two-week sprints, which meant turning design decisions into buildable work, keeping the backlog clear, and making sure the site kept moving while security updates were being implemented.
 
-2. **Sector-specific pathways**: Create tailored content and navigation for different industries, allowing each sector to find relevant information quickly and feel understood.
+That also meant owning a lot of the practical coordination around the build:
 
-3. **Accessibility first**: Design for all users, ensuring WCAG compliance and inclusive practices throughout. For debtors especially, this means clear imagery, guidance, and tools like Readspeaker read-aloud buttons.
+- translating stakeholder feedback into sprint-ready tasks
+- building the pages and checking how they held up in the real site
+- setting up and working across approval, staging, and dev environments
+- testing my own changes before they moved forward
+- keeping sprint direction focused so the team could ship without churn
 
-4. **Brand consistency**: Align visual identity and messaging with coeo's German branding while maintaining flexibility for local market needs.
+Working that way avoided the usual design handoff problem. I stayed close to the implementation detail, so if a pattern did not work in code, we could adjust it early instead of discovering it after the fact.
 
-5. **Authentic storytelling**: Show coeo's real commitment to inclusive debt collection through case studies, testimonials, and transparent processes.
+The roughest tradeoff was that not every stakeholder wanted the same thing.
 
-6. **Responsive by default**: Ensure the website works seamlessly across all devices and screen sizes.
+- Sales wanted stronger proof and faster conversion routes.
+- Marketing wanted room to tell the broader brand story.
+- Engineering wanted a layout system they could reuse without custom work everywhere.
 
-7. **Trust through transparency**: Provide clear information about processes, compliance, and support resources.
+My job was to keep those needs in view without letting the site turn into a compromise soup.
 
-## Key Features & Solutions
-
-### Fintech-Inspired Design with Personal Touch
-
-The website balances modern fintech aesthetics—clean layouts, professional typography, and contemporary color palettes—with warm, human-centered elements that reflect coeo's personal approach. This creates a visual identity that feels both professional and approachable, setting coeo apart from traditional debt collection agencies while maintaining trust and credibility.
-
-### Sector-Specific Content and Navigation
+## Navigation around intent
 
 <Bookmark label="Navigation design" section="design" domains="Navigation design, Content systems, B2B UX" />
 
-I designed the website to speak to different sectors individually, with tailored content pathways for industries like retail, utilities, healthcare, and more. Each sector has dedicated sections that address their specific needs, concerns, and use cases, making it easier for potential clients to see how coeo's services apply to their industry.
+I did not organize the site around internal teams or company departments. I organized it around what people were actually trying to do.
 
-### Enhanced Accessibility for Debtors
+Most visitors were there to do one of a few things:
 
-For debtors, inclusive design was even more important. I integrated several accessibility features:
+- Understand what coeo does.
+- Check whether coeo fits their sector.
+- Find support or debtor information.
+- Contact the right team without a long detour.
 
-**Readspeaker integration**: Read-aloud buttons throughout the website allow users to have content read to them, supporting those with reading difficulties, visual impairments, or language barriers.
+That changed the navigation from internal language to user intent. It sounds small, but it is the difference between a site that reflects the company and a site that helps people get somewhere.
 
-**Clear imagery and guidance**: Visual elements are designed to support understanding, with clear icons, illustrations, and guidance that help users navigate and understand information without relying solely on text.
+<Image
+  src="/coeo-marketing/figma-screens-overview.png"
+  alt="Figma overview showing the shared structure across the redesigned coeo marketing site"
+  width={1600}
+  height={800}
+  caption="This was the working map for the whole site: one structure, multiple sector pages, and enough consistency for the team to keep building from it."
+/>
 
-**Plain language throughout**: All content is written in accessible language, tested for readability, and structured to support comprehension.
+## Overview first, depth second
 
-### Clear Information Architecture
+The homepage worked like a dashboard for the site. It had to give people a quick read on who coeo is, which sectors it serves, and where to go next. Once that was clear, the deeper pages could do the heavier lifting.
 
-The website is organized around user journeys, with clear pathways for different audiences and sectors to find relevant information quickly. The navigation structure supports both general browsing and specific sector-focused exploration.
+That structure mattered because different visitors arrived with different levels of context.
 
-### Responsive Design
+- New visitors needed orientation first.
+- Experienced buyers needed the detailed sector proof faster.
+- Internal teams needed a predictable layout they could extend.
 
-The website is fully responsive, ensuring a consistent and accessible experience across all devices, from mobile phones to large desktop displays.
+So the page hierarchy followed a simple rule: overview at the top, detail lower down, and no dead ends in between.
 
-### AI Integration
+## Supporting different expertise levels
 
-<Bookmark label="AI integration" section="engineering" domains="AI implementation, Front-end integration, Product experimentation" />
+Some people came in with almost no context. Others already understood the sector and wanted the specifics.
 
-As part of this project, I worked with partner CM to integrate AI functionality into the website. This includes intelligent content recommendations, automated support features, and enhanced user experience through AI-powered interactions that help users find relevant information more efficiently.
+I designed for both.
 
-### SEO Optimization
+For lighter readers, the site needed clean entry points, short explanations, and obvious next steps. For more advanced users, it needed enough detail to answer real commercial questions without forcing them to call someone. That meant tightening the wording, keeping the hierarchy obvious, and making sure the sector pages could go deeper without feeling cluttered.
 
-The website is built with SEO best practices in mind, including:
+The same logic helped with debtor-facing content. If someone was already stressed, the site could not ask them to decode marketing language first. The route to help had to stay obvious.
 
-- Optimized content structure and metadata
-- Semantic HTML and proper heading hierarchy
-- Fast load times and performance optimization
-- Mobile-first indexing considerations
-- Structured data markup
-- Content optimization for relevant keywords
-
-This ensures the website is discoverable through search engines and reaches the right audiences organically.
-
-## Technical Considerations
+## Technical thinking
 
 <Bookmark label="Web implementation" section="engineering" domains="Front-end development, WordPress, AI integration, SEO" />
 
-**WordPress development**: The website is built in WordPress, providing a flexible, maintainable content management system that allows coeo's team to update content easily while maintaining design integrity and performance.
+I made a point of keeping the system friendly to engineering.
 
-**Responsive design**: The website works seamlessly across all devices, with mobile-first design principles ensuring optimal experience on all screen sizes.
+The big design-system decision was to stick to a small set of repeatable patterns: consistent hero sections, predictable content blocks, stable CTA treatment, and a limited set of layout variations. That made the WordPress build easier to assemble and easier to maintain after launch.
 
-**Performance optimization**: Fast load times and optimized assets ensure a smooth user experience, which is critical for SEO and user satisfaction.
+I also avoided custom patterns that would only solve one page. If a special treatment did not earn its keep across the rest of the site, I cut it. That saved time in the build and reduced the risk of the content team inheriting something they could not safely update.
 
-**SEO optimization**: Comprehensive SEO strategy including technical SEO, content optimization, structured data, and performance metrics to maximize organic visibility.
+The workflow choice mattered too. We kept validating page structure while the build was moving, which meant fewer late surprises and fewer rounds of rework at the end.
 
-**Accessibility compliance**: Full WCAG 2.1 AA compliance throughout the design and implementation, with special attention to features like Readspeaker integration and clear visual guidance for debtors.
+## Outcome
 
-**Brand alignment**: Design and development work closely with coeo's German branding guidelines to ensure visual and messaging consistency across markets.
+The redesign gave coeo a clearer site structure, a more consistent design system, and a better foundation for future content. Sales no longer had to carry as much of the explanation burden. Internal teams got a site that was easier to maintain. Visitors got a simpler path to the right information.
 
-## Outcomes & Impact
-
-The new marketing website successfully balances fintech aesthetics with coeo's personal approach, creating a modern brand presence that aligns with their German branding while speaking directly to different sectors. The enhanced accessibility features, particularly for debtors, demonstrate coeo's commitment to inclusive design in action.
-
-The SEO optimization and WordPress implementation provide a solid foundation for ongoing content management and organic growth, while the AI integration enhances user experience and helps visitors find relevant information more efficiently.
-
-## Lessons Learned
-
-This project reinforced several important lessons:
-
-**Balancing aesthetics and values**: Creating a fintech look while maintaining a personal approach required careful attention to visual language, tone, and user experience. The balance between professional and approachable is delicate but achievable.
-
-**Sector-specific content requires research**: Speaking to different sectors individually meant understanding each industry's unique needs, language, and concerns. This required extensive research and collaboration with subject matter experts.
-
-**Accessibility is a design feature, not an add-on**: Features like Readspeaker and clear visual guidance need to be designed in from the start, not added later. For debtors especially, these features are essential, not optional.
-
-**Brand consistency across markets**: Aligning with German branding while maintaining flexibility for local needs required careful consideration of which elements should be consistent and which can vary.
-
-**AI integration enhances, doesn't replace**: Working with partner CM to integrate AI showed that AI features work best when they enhance human-centered design rather than replace it. The AI helps users find information, but the design ensures they understand it.
+The work shipped in a way that leaves room for iteration, which is how it should be. The main structure is in place, and future changes can build on the same system instead of starting again from scratch.
