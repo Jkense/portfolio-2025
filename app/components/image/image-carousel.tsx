@@ -175,7 +175,6 @@ export default function ImageCarousel({ children }: ImageCarouselProps) {
               className="pointer-events-none select-none object-cover object-center"
               draggable={false}
             />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/10 via-black/0 to-transparent" />
           </motion.button>
         </AnimatePresence>
 
@@ -222,48 +221,39 @@ export default function ImageCarousel({ children }: ImageCarouselProps) {
             </motion.button>
           </>
         )}
-      </div>
 
-      <AnimatePresence mode="wait">
-        <motion.figcaption
-          key={current.caption ?? index}
-          initial={{ opacity: 0, y: 4 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.2 }}
-          className="mt-2 text-sm text-slate-500 dark:text-slate-400 leading-snug min-h-[1.5em]"
-        >
-          {current.caption}
-        </motion.figcaption>
-      </AnimatePresence>
-
-      {images.length > 1 && (
-        <div className="flex justify-center items-center gap-4 mt-3">
-          <div className="flex gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                type="button"
-                aria-label={`Show image ${i + 1}`}
-                className="relative h-2.5 w-2.5 rounded-full bg-slate-300 transition-colors dark:bg-slate-600"
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-4 pt-10 sm:px-5">
+          <div className="min-h-[4.75rem] rounded-2xl border border-white/10 bg-black/45 shadow-lg shadow-black/20 backdrop-blur-sm">
+            <AnimatePresence initial={false} mode="wait">
+              <motion.figcaption
+                key={current.caption ?? index}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="flex min-h-[4.75rem] items-end justify-between gap-4 px-4 py-3 text-sm leading-snug text-white/90 sm:px-5"
               >
-                {i === index && (
-                  <span className="absolute inset-0 rounded-full bg-slate-800 dark:bg-white" />
+                <span className="flex-1">{current.caption}</span>
+                {images.length > 1 && (
+                  <span className="pointer-events-auto flex items-center gap-2 self-end">
+                    {images.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => goTo(i)}
+                        type="button"
+                        aria-label={`Show image ${i + 1}`}
+                        className={`h-2.5 w-2.5 rounded-full border border-white/70 transition-opacity ${
+                          i === index ? "bg-white opacity-100" : "bg-white/25 opacity-80"
+                        }`}
+                      />
+                    ))}
+                  </span>
                 )}
-              </button>
-            ))}
+              </motion.figcaption>
+            </AnimatePresence>
           </div>
-          <motion.span
-            key={`${index}-${images.length}`}
-            initial={{ opacity: 0, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-slate-500 dark:text-slate-400 tabular-nums"
-          >
-            {index + 1} / {images.length}
-          </motion.span>
         </div>
-      )}
+      </div>
 
       <AnimatePresence>
         {isFullscreenOpen && (
